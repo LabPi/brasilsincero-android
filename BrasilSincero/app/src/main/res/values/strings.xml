@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Brasil Sincero</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_splash">Brasil Sincero</string>
+    <string name="graphs">Gráficos</string>
+    <string name="denunciations">Denúncias</string>
+    <string name="states">Estados</string>
+    <string name="city">Cidade</string>
+</resources>
