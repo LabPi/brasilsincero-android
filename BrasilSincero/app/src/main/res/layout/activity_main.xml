@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     tools:context="com.ericmguimaraes.brasilsincero.MainActivity">
 
@@ -26,55 +27,6 @@
             app:tabMode="fixed"
             app:tabGravity="fill"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="100">
-
-            <!--  City Label -->
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="50">
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/input_city"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:paddingEnd="180dp"
-                    android:paddingRight="180dp"
-                    android:hint="@string/city" />
-            </android.support.design.widget.TextInputLayout>
-
-            <!--  State Label -->
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="30">
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/input_state"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingEnd="180dp"
-                    android:paddingRight="180dp"
-                    android:hint="@string/states" />
-            </android.support.design.widget.TextInputLayout>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/filter"
-                android:layout_weight="20"/>
-
-        </LinearLayout>
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
@@ -82,5 +34,57 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu_fab"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        fab:menu_labels_ellipsize="end"
+        fab:menu_labels_singleLine="true"
+        fab:menu_backgroundColor="#ccffffff"
+        fab:menu_labels_position="left"
+        fab:menu_icon="@drawable/filter"
+        fab:menu_colorNormal="@color/colorAccent"
+        >
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_city_region"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rank"
+            fab:fab_size="mini"
+            fab:fab_label="Ranking de cidades por região" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_state_region"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rank"
+            fab:fab_size="mini"
+            fab:fab_label="Ranking de estados por região" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_city_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rank"
+            fab:fab_size="mini"
+            fab:fab_label="Ranking de cidades por estado" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_filters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/filter"
+            fab:fab_size="mini"
+            fab:fab_label="Filtros" />
+
+    </com.github.clans.fab.FloatingActionMenu>
 
 </android.support.design.widget.CoordinatorLayout>

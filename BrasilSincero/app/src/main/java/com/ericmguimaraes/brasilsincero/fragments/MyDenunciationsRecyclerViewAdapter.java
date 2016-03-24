@@ -1,4 +1,4 @@
-package com.ericmguimaraes.brasilsincero.adapters;
+package com.ericmguimaraes.brasilsincero.fragments;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ericmguimaraes.brasilsincero.R;
-import com.ericmguimaraes.brasilsincero.fragments.ConvenioFragment.OnListFragmentInteractionListener;
+import com.ericmguimaraes.brasilsincero.fragments.DenunciationsFragment.OnListFragmentInteractionListener;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent.DummyItem;
 
 import java.util.List;
@@ -17,12 +17,12 @@ import java.util.List;
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConvenioRecyclerViewAdapter.ViewHolder> {
+public class MyDenunciationsRecyclerViewAdapter extends RecyclerView.Adapter<MyDenunciationsRecyclerViewAdapter.ViewHolder> {
 
     private final List<DummyItem> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyConvenioRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyDenunciationsRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -30,7 +30,7 @@ public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConven
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_convenio_item, parent, false);
+                .inflate(R.layout.fragment_denunciation_item, parent, false);
         return new ViewHolder(view);
     }
 

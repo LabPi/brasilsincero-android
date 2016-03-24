@@ -11,18 +11,28 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashActivity"
-            android:label="@string/title_activity_splash"
-            android:theme="@style/SplashTheme">
+            android:label="@string/title_activity_splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DenunciationsActivity"
+            android:label="@string/title_activity_denunciations"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FilterActivity"
+            android:label="@string/title_activity_filter"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GraphsActivity"
+            android:label="@string/title_activity_graphs"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

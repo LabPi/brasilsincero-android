@@ -4,6 +4,9 @@
     <string name="title_activity_splash">Brasil Sincero</string>
     <string name="graphs">Gráficos</string>
     <string name="denunciations">Denúncias</string>
-    <string name="states">Estados</string>
+    <string name="states">Estado</string>
     <string name="city">Cidade</string>
+    <string name="title_activity_denunciations">DenunciationsActivity</string>
+    <string name="title_activity_filter">FilterActivity</string>
+    <string name="title_activity_graphs">graphsActivity</string>
 </resources>

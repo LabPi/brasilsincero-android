@@ -1,8 +1,9 @@
 package com.ericmguimaraes.brasilsincero;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+import com.github.clans.fab.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -31,6 +32,25 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
     @Bind(R.id.viewpager)
     ViewPager viewPager;
 
+    @Bind(R.id.fab_city_region)
+    FloatingActionButton fabCityRegion;
+
+    @Bind(R.id.fab_city_state)
+    FloatingActionButton fabCityState;
+
+    @Bind(R.id.fab_state_region)
+    FloatingActionButton fabStateRegion;
+
+    @Bind(R.id.fab_filters)
+    FloatingActionButton fabFilters;
+
+    View.OnClickListener fabRankingOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            FilterActivity.isRanking = true;
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +64,20 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
         tabLayout.setupWithViewPager(viewPager);
 
         viewPager.setCurrentItem(1);
+
+        fabCityRegion.setOnClickListener(fabRankingOnClickListener);
+        fabCityState.setOnClickListener(fabRankingOnClickListener);
+        fabStateRegion.setOnClickListener(fabRankingOnClickListener);
+
+        fabFilters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,FilterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
     }
 
@@ -68,11 +102,21 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        Intent intent;
+        switch (id){
+            case R.id.denunciations_menu:
+                intent = new Intent(this,DenunciationsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.filter_menu:
+                intent = new Intent(this,FilterActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.graphs_menu:
+                intent = new Intent(this,GraphsActivity.class);
+                startActivity(intent);
+                break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
