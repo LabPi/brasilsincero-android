@@ -1,90 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    tools:context="com.ericmguimaraes.brasilsincero.MainActivity">
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabMode="fixed"
-            app:tabGravity="fill"/>
-
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
+    tools:openDrawer="start">
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
+        xmlns:fab="http://schemas.android.com/apk/res-auto"
+        android:fitsSystemWindows="true"
+        tools:context="com.ericmguimaraes.brasilsincero.MainActivity">
 
-    <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/menu_fab"
-        android:layout_width="match_parent"
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabMode="fixed"
+                app:tabGravity="fill"/>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/menu_fab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            fab:menu_labels_ellipsize="end"
+            fab:menu_labels_singleLine="true"
+            fab:menu_backgroundColor="#ccffffff"
+            fab:menu_labels_position="left"
+            fab:menu_icon="@drawable/filter"
+            fab:menu_colorNormal="@color/colorAccent"
+            >
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_city_region"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rank"
+                fab:fab_size="mini"
+                fab:fab_label="Ranking de cidades por região" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_state_region"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rank"
+                fab:fab_size="mini"
+                fab:fab_label="Ranking de estados por região" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_city_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rank"
+                fab:fab_size="mini"
+                fab:fab_label="Ranking de cidades por estado" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_filters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/filter"
+                fab:fab_size="mini"
+                fab:fab_label="Filtros" />
+
+        </com.github.clans.fab.FloatingActionMenu>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        fab:menu_labels_ellipsize="end"
-        fab:menu_labels_singleLine="true"
-        fab:menu_backgroundColor="#ccffffff"
-        fab:menu_labels_position="left"
-        fab:menu_icon="@drawable/filter"
-        fab:menu_colorNormal="@color/colorAccent"
-        >
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main2"
+        app:menu="@menu/activity_main_drawer" />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_city_region"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/rank"
-            fab:fab_size="mini"
-            fab:fab_label="Ranking de cidades por região" />
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_state_region"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/rank"
-            fab:fab_size="mini"
-            fab:fab_label="Ranking de estados por região" />
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_city_state"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/rank"
-            fab:fab_size="mini"
-            fab:fab_label="Ranking de cidades por estado" />
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_filters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/filter"
-            fab:fab_size="mini"
-            fab:fab_label="Filtros" />
-
-    </com.github.clans.fab.FloatingActionMenu>
-
-</android.support.design.widget.CoordinatorLayout>
+</android.support.v4.widget.DrawerLayout>
