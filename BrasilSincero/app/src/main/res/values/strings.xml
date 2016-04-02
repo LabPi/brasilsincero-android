@@ -9,7 +9,6 @@
     <string name="title_activity_denunciations">DenunciationsActivity</string>
     <string name="title_activity_filter">FilterActivity</string>
     <string name="title_activity_graphs">graphsActivity</string>
-    <string name="title_activity_main2">Main2Activity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
