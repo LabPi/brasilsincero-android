@@ -3,34 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.ericmguimaraes.brasilsincero.MainActivity">
 
-
-    <item
-        android:id="@+id/search_menu"
-        android:orderInCategory="100"
-        android:title="@string/denunciations"
+    <item android:id="@+id/search"
+        android:title="Busca"
         android:icon="@drawable/search"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/filter_menu"
-        android:orderInCategory="100"
-        android:title="Filtros"
-        android:icon="@drawable/filter"
-        app:showAsAction="never"
-        android:visible="false"/>
-
-    <item
-        android:id="@+id/denunciations_menu"
-        android:orderInCategory="200"
-        android:title="@string/denunciations"
-        android:icon="@drawable/megaphone"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/graphs_menu"
-        android:orderInCategory="300"
-        android:title="@string/graphs"
-        app:showAsAction="always"
-        android:icon="@drawable/pizzagraph"/>
+        app:showAsAction="collapseActionView|ifRoom"
+        app:actionViewClass="android.widget.SearchView" />
 
 </menu>
