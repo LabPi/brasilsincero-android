@@ -77,7 +77,7 @@
             fab:menu_colorNormal="@color/colorPrimary"
             fab:menu_colorPressed="@color/colorPrimary"
             fab:menu_colorRipple="#99FFFFFF"
-            android:layout_gravity="bottom|right">
+            android:layout_gravity="bottom|end">
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/fab_national"

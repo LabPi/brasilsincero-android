@@ -4,6 +4,9 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import com.github.clans.fab.FloatingActionButton;
 
@@ -21,6 +24,9 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
 
 import com.ericmguimaraes.brasilsincero.adapters.ViewPagerAdapter;
@@ -116,8 +122,16 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
         SearchView  searchView = (SearchView) MenuItemCompat.getActionView(mSearchMenuItem);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setIconifiedByDefault(false);
-        // ou searchManager.getSearchableInfo(
-        //new ComponentName(getApplicationContext(), SearchResultActivity.class))
+        LinearLayout linearLayoutOfSearchView = (LinearLayout) searchView.getChildAt(0);
+        Button advancedSearchButton = new Button(getApplicationContext());
+        Drawable icon = getResources().getDrawable(R.drawable.icone_busca_avancada);
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+            advancedSearchButton.setBackgroundDrawable(icon);
+        } else {
+            advancedSearchButton.setBackground(icon);
+        }
+        RelativeLayout.LayoutParams navButtonsParams = new RelativeLayout.LayoutParams(toolbar.getHeight() * 2 / 3, toolbar.getHeight() * 2 / 3);
+        linearLayoutOfSearchView.addView(advancedSearchButton,navButtonsParams);
         return true;
     }
 
@@ -141,21 +155,25 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-/*
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        } */
-
+        Intent intent = null;
+        switch (id){
+            case R.id.nav_denunciations :
+                intent = new Intent(this,DenunciationsActivity.class);
+                break;
+            case R.id.nav_graphs :
+                intent = new Intent(this,GraphsActivity.class);
+                break;
+            case R.id.nav_evaluation :
+                final String appPackageName = getPackageName();
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
+                break;
+        }
+        if(intent!=null)
+            startActivity(intent);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
