@@ -103,8 +103,9 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new ConvenioFragment(), "Convênios");
-        adapter.addFragment(new ConvenioFragment(), "Transferencias");
+        adapter.addFragment(new ConvenioFragment(), "Transferências");
         viewPager.setAdapter(adapter);
+        viewPager.setCurrentItem(0);
     }
 
     @Override

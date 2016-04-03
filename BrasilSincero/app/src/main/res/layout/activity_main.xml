@@ -86,10 +86,10 @@
                 android:src="@drawable/ranking_nacional"
                 fab:fab_size="mini"
                 fab:fab_label="Ranking Nacional"
-                fab:fab_progress_backgroundColor="@color/colorPrimary"
-                app:fab_colorNormal="@color/colorPrimary"
-                app:fab_colorPressed="@color/colorPrimaryDark"
-                app:fab_colorRipple="#99FFFFFF"/>
+                fab:fab_progress_backgroundColor="@android:color/transparent"
+                app:fab_colorNormal="@android:color/transparent"
+                app:fab_colorPressed="@android:color/transparent"
+                app:fab_colorRipple="@android:color/transparent"/>
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/fab_regional"
@@ -98,10 +98,10 @@
                 android:src="@drawable/ranking_regional"
                 fab:fab_size="mini"
                 fab:fab_label="Ranking Regional"
-                fab:fab_progress_backgroundColor="@color/colorPrimary"
-                app:fab_colorNormal="@color/colorPrimary"
-                app:fab_colorPressed="@color/colorPrimaryDark"
-                app:fab_colorRipple="#99FFFFFF"/>
+                fab:fab_progress_backgroundColor="@android:color/transparent"
+                app:fab_colorNormal="@android:color/transparent"
+                app:fab_colorPressed="@android:color/transparent"
+                app:fab_colorRipple="@android:color/transparent"/>
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/fab_state"
@@ -110,10 +110,10 @@
                 android:src="@drawable/ranking_estadual"
                 fab:fab_size="mini"
                 fab:fab_label="Ranking Estadual"
-                fab:fab_progress_backgroundColor="@color/colorPrimary"
-                app:fab_colorNormal="@color/colorPrimary"
-                app:fab_colorPressed="@color/colorPrimaryDark"
-                app:fab_colorRipple="#99FFFFFF"/>
+                fab:fab_progress_backgroundColor="@android:color/transparent"
+                app:fab_colorNormal="@android:color/transparent"
+                app:fab_colorPressed="@android:color/transparent"
+                app:fab_colorRipple="@android:color/transparent"/>
 
         </com.github.clans.fab.FloatingActionMenu>
 

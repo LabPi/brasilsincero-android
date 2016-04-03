@@ -22,6 +22,5 @@
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_denunciations" />
-    <include layout="@layout/content_denunciations" />
 
 </android.support.design.widget.CoordinatorLayout>
