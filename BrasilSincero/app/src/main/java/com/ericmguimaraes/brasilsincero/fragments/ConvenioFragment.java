@@ -10,10 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ericmguimaraes.brasilsincero.FilterActivity;
 import com.ericmguimaraes.brasilsincero.R;
 import com.ericmguimaraes.brasilsincero.adapters.MyConvenioRecyclerViewAdapter;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent.DummyItem;
+import com.github.clans.fab.FloatingActionButton;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * A fragment representing a list of Items.
@@ -28,6 +33,9 @@ public class ConvenioFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+
+    @Bind(R.id.list)
+    RecyclerView recyclerView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -59,18 +67,15 @@ public class ConvenioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_convenio_list, container, false);
+        ButterKnife.bind(this,view);
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new MyConvenioRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+        Context context = view.getContext();
+        if (mColumnCount <= 1) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        } else {
+            recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
+        recyclerView.setAdapter(new MyConvenioRecyclerViewAdapter(DummyContent.ITEMS, mListener));
         return view;
     }
 

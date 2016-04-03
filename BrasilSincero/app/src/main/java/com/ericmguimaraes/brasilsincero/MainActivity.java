@@ -3,6 +3,7 @@ package com.ericmguimaraes.brasilsincero;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import com.github.clans.fab.FloatingActionButton;
 
@@ -40,17 +41,14 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
     @Bind(R.id.viewpager)
     ViewPager viewPager;
 
-    @Bind(R.id.fab_city_region)
-    FloatingActionButton fabCityRegion;
+    @Bind(R.id.fab_national)
+    FloatingActionButton fabNational;
 
-    @Bind(R.id.fab_city_state)
-    FloatingActionButton fabCityState;
+    @Bind(R.id.fab_regional)
+    FloatingActionButton fabRegion;
 
-    @Bind(R.id.fab_state_region)
-    FloatingActionButton fabStateRegion;
-
-    @Bind(R.id.fab_filters)
-    FloatingActionButton fabFilters;
+    @Bind(R.id.fab_state)
+    FloatingActionButton fabState;
 
     View.OnClickListener fabRankingOnClickListener = new View.OnClickListener() {
         @Override
@@ -73,17 +71,9 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
 
         viewPager.setCurrentItem(1);
 
-        fabCityRegion.setOnClickListener(fabRankingOnClickListener);
-        fabCityState.setOnClickListener(fabRankingOnClickListener);
-        fabStateRegion.setOnClickListener(fabRankingOnClickListener);
-
-        fabFilters.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,FilterActivity.class);
-                startActivity(intent);
-            }
-        });
+        fabNational.setOnClickListener(fabRankingOnClickListener);
+        fabRegion.setOnClickListener(fabRankingOnClickListener);
+        fabState.setOnClickListener(fabRankingOnClickListener);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -121,25 +111,14 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
         MenuItem mSearchMenuItem = menu.findItem(R.id.search);
+        mSearchMenuItem.getIcon().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
+
         SearchView  searchView = (SearchView) MenuItemCompat.getActionView(mSearchMenuItem);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setIconifiedByDefault(false);
         // ou searchManager.getSearchableInfo(
         //new ComponentName(getApplicationContext(), SearchResultActivity.class))
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        Intent intent;
-        switch (id){
-
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -162,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+/*
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
@@ -175,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
 
         } else if (id == R.id.nav_send) {
 
-        }
+        } */
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
