@@ -73,7 +73,7 @@
             fab:menu_labels_singleLine="true"
             fab:menu_backgroundColor="@android:color/transparent"
             fab:menu_labels_position="left"
-            fab:menu_icon="@drawable/rank"
+            fab:menu_icon="@drawable/ic_ranking_floating_button"
             fab:menu_colorNormal="@color/colorPrimary"
             fab:menu_colorPressed="@color/colorPrimary"
             fab:menu_colorRipple="#99FFFFFF"
