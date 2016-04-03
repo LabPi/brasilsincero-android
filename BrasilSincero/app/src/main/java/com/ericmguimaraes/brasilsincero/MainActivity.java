@@ -130,6 +130,13 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
         } else {
             advancedSearchButton.setBackground(icon);
         }
+        advancedSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,FilterActivity.class);
+                startActivity(intent);
+            }
+        });
         RelativeLayout.LayoutParams navButtonsParams = new RelativeLayout.LayoutParams(toolbar.getHeight() * 2 / 3, toolbar.getHeight() * 2 / 3);
         linearLayoutOfSearchView.addView(advancedSearchButton,navButtonsParams);
         return true;

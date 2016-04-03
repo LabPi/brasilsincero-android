@@ -32,6 +32,16 @@ public class FilterActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         rankingRadioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

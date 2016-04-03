@@ -1,14 +1,13 @@
 <resources>
     <string name="app_name">Brasil Sincero</string>
-    <string name="action_settings">Settings</string>
     <string name="title_activity_splash">Brasil Sincero</string>
     <string name="graphs">Gráficos</string>
     <string name="denunciations">Denúncias</string>
     <string name="states">Estado</string>
     <string name="city">Cidade</string>
-    <string name="title_activity_denunciations">DenunciationsActivity</string>
-    <string name="title_activity_filter">FilterActivity</string>
-    <string name="title_activity_graphs">graphsActivity</string>
+    <string name="title_activity_denunciations">Denúncias</string>
+    <string name="title_activity_filter">Busca Avançada</string>
+    <string name="title_activity_graphs">Gráficos</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
