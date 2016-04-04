@@ -32,6 +32,7 @@ import android.widget.SearchView;
 import com.ericmguimaraes.brasilsincero.adapters.ViewPagerAdapter;
 import com.ericmguimaraes.brasilsincero.fragments.ConvenioFragment;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent;
+import com.github.clans.fab.FloatingActionMenu;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -56,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
     @Bind(R.id.fab_state)
     FloatingActionButton fabState;
 
+    @Bind(R.id.menu_fab)
+    FloatingActionMenu menufab;
+
     View.OnClickListener fabRankingOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -75,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
 
         tabLayout.setupWithViewPager(viewPager);
 
-        viewPager.setCurrentItem(1);
+        viewPager.setCurrentItem(0);
 
         fabNational.setOnClickListener(fabRankingOnClickListener);
         fabRegion.setOnClickListener(fabRankingOnClickListener);
@@ -92,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
 
         handleIntent(getIntent());
 
+        menufab.setIconAnimated(false);
+
     }
 
     @Override
@@ -105,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
         adapter.addFragment(new ConvenioFragment(), "Convênios");
         adapter.addFragment(new ConvenioFragment(), "Transferências");
         viewPager.setAdapter(adapter);
-        viewPager.setCurrentItem(0);
     }
 
     @Override
@@ -125,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
         searchView.setIconifiedByDefault(false);
         LinearLayout linearLayoutOfSearchView = (LinearLayout) searchView.getChildAt(0);
         Button advancedSearchButton = new Button(getApplicationContext());
-        Drawable icon = getResources().getDrawable(R.drawable.icone_busca_avancada);
+        Drawable icon = getResources().getDrawable(R.drawable.ic_icone_busca_avancada);
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
             advancedSearchButton.setBackgroundDrawable(icon);
         } else {

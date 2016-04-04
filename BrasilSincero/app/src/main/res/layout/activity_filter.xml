@@ -21,26 +21,85 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
-        <RadioButton
-            android:id="@+id/rankingRadio"
-            android:layout_margin="20dp"
-            android:layout_width="wrap_content"
+        <!--
+                - Número do programa
+                - Esfera
+                - Qualificação do proponente
+                - Botão
+                - Região
+                - Estado
+                -->
+
+        <!--  Número do programa -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ranking"
-            android:hint="Ranking"
-            android:gravity="center|top"
-            android:checked="true"/>
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/input_numero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Número do programa" />
+        </android.support.design.widget.TextInputLayout>
+
+        <!--  Esfera -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/input_esfera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Esfera" />
+        </android.support.design.widget.TextInputLayout>
+
+        <!--  Esfera -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/input_qualificacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Qualificação do proponente" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/states_spinner"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_vertical_margin"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <Spinner
+            android:id="@+id/regions_spinner"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_vertical_margin"
+            android:layout_gravity="center_horizontal"/>
+
         <Button
             android:id="@+id/confirmationBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/rankingRadio"
+            android:layout_gravity="center_horizontal"
             android:text="Confirma"/>
-    </RelativeLayout>
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
