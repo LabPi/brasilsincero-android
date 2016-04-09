@@ -12,4 +12,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="search_hint">Cidades, Estados, Regioes e etc</string>
+    <string name="title_activity_convenio_details">ConvenioDetailsActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>
