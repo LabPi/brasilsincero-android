@@ -46,6 +46,10 @@
         <activity
             android:name=".ConvenioDetailsActivity"
             android:label="@string/title_activity_convenio_details"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DenuntiantionRegistActivity"
+            android:label="@string/title_activity_denuntiantion_regist"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

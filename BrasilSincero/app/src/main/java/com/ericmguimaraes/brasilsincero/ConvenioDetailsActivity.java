@@ -1,5 +1,6 @@
 package com.ericmguimaraes.brasilsincero;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -33,10 +34,28 @@ public class ConvenioDetailsActivity extends AppCompatActivity implements Denunc
 
         ButterKnife.bind(this);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         Drawable img = null;
         img = ContextCompat.getDrawable(getApplicationContext(), R.drawable.icone_denuncias);
         img.setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
         fab.setImageDrawable(img);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ConvenioDetailsActivity.this, DenuntiantionRegistActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
