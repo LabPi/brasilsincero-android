@@ -25,17 +25,24 @@ public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConven
     private final List<DummyItem> mValues;
     private final OnListFragmentInteractionListener mListener;
     private Activity activity;
+    boolean isConvenio = true;
 
-    public MyConvenioRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener, Activity activity) {
+    public MyConvenioRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener, Activity activity, boolean isConvenio) {
         mValues = items;
         mListener = listener;
         this.activity = activity;
+        this.isConvenio = isConvenio;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_convenio_item, parent, false);
+        View view;
+        if(isConvenio)
+            view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.fragment_convenio_item, parent, false);
+        else
+            view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.fragment_transferencia_item, parent, false);
         return new ViewHolder(view);
     }
 

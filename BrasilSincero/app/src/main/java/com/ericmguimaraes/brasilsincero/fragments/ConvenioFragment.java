@@ -36,12 +36,21 @@ public class ConvenioFragment extends Fragment {
 
     @Bind(R.id.list)
     RecyclerView recyclerView;
+    private boolean isConvenio = true;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
     public ConvenioFragment() {
+    }
+
+    public static ConvenioFragment newInstance(boolean isConvenio) {
+        ConvenioFragment fragment = new ConvenioFragment();
+        Bundle args = new Bundle();
+        args.putBoolean("isConvenio", isConvenio);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     // TODO: Customize parameter initialization
@@ -59,7 +68,8 @@ public class ConvenioFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+            mColumnCount = 0;
+            isConvenio = getArguments().getBoolean("isConvenio");
         }
     }
 
@@ -75,7 +85,7 @@ public class ConvenioFragment extends Fragment {
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        recyclerView.setAdapter(new MyConvenioRecyclerViewAdapter(DummyContent.ITEMS, mListener, getActivity()));
+        recyclerView.setAdapter(new MyConvenioRecyclerViewAdapter(DummyContent.ITEMS, mListener, getActivity(), isConvenio));
         return view;
     }
 
