@@ -1,4 +1,4 @@
-package com.ericmguimaraes.brasilsincero.fragments;
+package com.ericmguimaraes.brasilsincero.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,8 +10,6 @@ import android.widget.TextView;
 import com.ericmguimaraes.brasilsincero.R;
 import com.ericmguimaraes.brasilsincero.fragments.DenunciationsFragment.OnListFragmentInteractionListener;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent.DummyItem;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 

@@ -21,106 +21,127 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:weightSum="100"
+        android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
-            android:id="@+id/programaLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="Programa:"
-            android:layout_marginBottom="@dimen/text_margin"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_weight="40">
 
-        <TextView
-            android:id="@+id/programaContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:textSize="18sp"
-            android:text="Programa de exemplo 123"
-            android:layout_marginBottom="@dimen/text_margin"/>
+            <TextView
+                android:id="@+id/programaLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Programa:"
+                android:layout_marginBottom="@dimen/text_margin"/>
 
-        <TextView
-            android:id="@+id/proponenteLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="Proponente:"
-            android:layout_below="@+id/programaLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="@dimen/text_margin"/>
+            <TextView
+                android:id="@+id/programaContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textSize="18sp"
+                android:text="Programa de exemplo 123"
+                android:layout_marginBottom="@dimen/text_margin"/>
 
-        <TextView
-            android:id="@+id/proponenteContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:textSize="18sp"
-            android:text="Fulando da silva santos"
-            android:layout_below="@id/programaContent"
-            android:layout_marginBottom="@dimen/text_margin"/>
+            <TextView
+                android:id="@+id/proponenteLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Proponente:"
+                android:layout_below="@+id/programaLabel"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="@dimen/text_margin"/>
 
-        <TextView
-            android:id="@+id/responsavelLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="Responsável:"
-            android:layout_below="@id/proponenteContent"
-            android:layout_marginBottom="@dimen/text_margin"/>
+            <TextView
+                android:id="@+id/proponenteContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textSize="18sp"
+                android:text="Fulando da silva santos"
+                android:layout_below="@id/programaContent"
+                android:layout_marginBottom="@dimen/text_margin"/>
 
-        <TextView
-            android:id="@+id/responsavelContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:textSize="18sp"
-            android:text="Fulando da silva santos"
-            android:layout_below="@id/proponenteContent"
-            android:layout_marginBottom="@dimen/text_margin"/>
+            <TextView
+                android:id="@+id/responsavelLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Responsável:"
+                android:layout_below="@id/proponenteContent"
+                android:layout_marginBottom="@dimen/text_margin"/>
 
-        <TextView
-            android:id="@+id/valorLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="Valor Total:"
-            android:layout_below="@id/responsavelContent"
-            android:layout_marginBottom="@dimen/text_margin"/>
+            <TextView
+                android:id="@+id/responsavelContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textSize="18sp"
+                android:text="Fulando da silva santos"
+                android:layout_below="@id/proponenteContent"
+                android:layout_marginBottom="@dimen/text_margin"/>
 
-        <TextView
-            android:id="@+id/valorContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:textSize="18sp"
-            android:text="R$ 1.000.000,00"
-            android:layout_below="@id/responsavelContent"
-            android:layout_marginBottom="@dimen/text_margin"/>
+            <TextView
+                android:id="@+id/valorLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Valor Total:"
+                android:layout_below="@id/responsavelContent"
+                android:layout_marginBottom="@dimen/text_margin"/>
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/valorContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textSize="18sp"
+                android:text="R$ 1.000.000,00"
+                android:layout_below="@id/responsavelContent"
+                android:layout_marginBottom="@dimen/text_margin"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="60" />
+
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/icone_denuncias"
+        android:theme="@style/fabTheme"
+        />
 
 </android.support.design.widget.CoordinatorLayout>

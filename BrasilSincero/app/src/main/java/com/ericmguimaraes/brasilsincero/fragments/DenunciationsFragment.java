@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ericmguimaraes.brasilsincero.R;
+import com.ericmguimaraes.brasilsincero.adapters.MyDenunciationsRecyclerViewAdapter;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent.DummyItem;
 

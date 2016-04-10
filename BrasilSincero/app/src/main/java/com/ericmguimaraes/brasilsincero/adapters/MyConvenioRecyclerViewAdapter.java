@@ -1,11 +1,14 @@
 package com.ericmguimaraes.brasilsincero.adapters;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ericmguimaraes.brasilsincero.ConvenioDetailsActivity;
 import com.ericmguimaraes.brasilsincero.R;
 import com.ericmguimaraes.brasilsincero.fragments.ConvenioFragment.OnListFragmentInteractionListener;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent.DummyItem;
@@ -21,10 +24,12 @@ public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConven
 
     private final List<DummyItem> mValues;
     private final OnListFragmentInteractionListener mListener;
+    private Activity activity;
 
-    public MyConvenioRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyConvenioRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener, Activity activity) {
         mValues = items;
         mListener = listener;
+        this.activity = activity;
     }
 
     @Override
@@ -43,6 +48,8 @@ public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConven
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(activity, ConvenioDetailsActivity.class);
+                activity.startActivity(intent);
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
@@ -74,5 +81,6 @@ public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConven
         public String toString() {
             return super.toString() + " '" + mContentView.getText() + "'";
         }
+
     }
 }

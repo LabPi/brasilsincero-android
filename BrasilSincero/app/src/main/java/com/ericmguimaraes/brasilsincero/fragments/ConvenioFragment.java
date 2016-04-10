@@ -75,7 +75,7 @@ public class ConvenioFragment extends Fragment {
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        recyclerView.setAdapter(new MyConvenioRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+        recyclerView.setAdapter(new MyConvenioRecyclerViewAdapter(DummyContent.ITEMS, mListener, getActivity()));
         return view;
     }
 
