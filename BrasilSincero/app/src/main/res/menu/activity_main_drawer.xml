@@ -11,22 +11,12 @@
             android:icon="@drawable/icone_denuncias"
             android:title="Denúncias" />
         <item
+            android:id="@+id/nav_statistics"
+            android:icon="@drawable/icone_estatistica"
+            android:title="Estatisticas" />
+        <item
             android:id="@+id/nav_evaluation"
             android:icon="@drawable/icone_avaliar"
             android:title="Avalie o Aplicativo" />
     </group>
-<!--
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
--->
 </menu>

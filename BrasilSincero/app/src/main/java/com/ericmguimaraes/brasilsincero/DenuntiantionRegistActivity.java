@@ -32,7 +32,7 @@ public class DenuntiantionRegistActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        
+
         ButterKnife.bind(this);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +41,6 @@ public class DenuntiantionRegistActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
 }
