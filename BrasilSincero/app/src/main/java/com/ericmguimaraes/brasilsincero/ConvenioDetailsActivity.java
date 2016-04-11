@@ -13,6 +13,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.ericmguimaraes.brasilsincero.fragments.DenunciationsFragment;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent;
@@ -24,6 +25,7 @@ public class ConvenioDetailsActivity extends AppCompatActivity implements Denunc
 
     @Bind(R.id.fab)
     FloatingActionButton fab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

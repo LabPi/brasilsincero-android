@@ -8,6 +8,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+
+import com.ericmguimaraes.brasilsincero.model.Convenio;
 import com.github.clans.fab.FloatingActionButton;
 
 import android.support.design.widget.NavigationView;
@@ -149,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
     }
 
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+    public void onListFragmentInteraction(Convenio item) {
 
     }
 

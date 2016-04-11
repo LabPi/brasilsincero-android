@@ -12,8 +12,13 @@ import com.ericmguimaraes.brasilsincero.ConvenioDetailsActivity;
 import com.ericmguimaraes.brasilsincero.R;
 import com.ericmguimaraes.brasilsincero.fragments.ConvenioFragment.OnListFragmentInteractionListener;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent.DummyItem;
+import com.ericmguimaraes.brasilsincero.model.Convenio;
+import com.google.gson.Gson;
 
 import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
@@ -22,12 +27,12 @@ import java.util.List;
  */
 public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConvenioRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Convenio> mValues;
     private final OnListFragmentInteractionListener mListener;
     private Activity activity;
     boolean isConvenio = true;
 
-    public MyConvenioRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener, Activity activity, boolean isConvenio) {
+    public MyConvenioRecyclerViewAdapter(List<Convenio> items, OnListFragmentInteractionListener listener, Activity activity, boolean isConvenio) {
         mValues = items;
         mListener = listener;
         this.activity = activity;
@@ -48,14 +53,19 @@ public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConven
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        Convenio c = mValues.get(position);
+        holder.mItem = c;
+        holder.nm_programa.setText(c.nm_programa.substring(0,15)+"...");
+        holder.location.setText(c.nm_municipio_proponente+" - "+c.uf_proponente);
+        holder.date.setText(c.dt_proposta);
+        holder.vl_global.setText(c.vl_global);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity, ConvenioDetailsActivity.class);
+                Gson gson = new Gson();
+                intent.putExtra("convenio",gson.toJson(holder.mItem, Convenio.class));
                 activity.startActivity(intent);
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
@@ -73,20 +83,24 @@ public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConven
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+        public Convenio mItem;
+
+        @Bind(R.id.titleText)
+        public TextView nm_programa;
+
+        @Bind(R.id.locationText)
+        public TextView location;
+
+        @Bind(R.id.dateText)
+        public TextView date;
+
+        @Bind(R.id.valueText)
+        public TextView vl_global;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
-        }
-
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            ButterKnife.bind(this, view);
         }
 
     }
