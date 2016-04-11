@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.ericmguimaraes.brasilsincero.fragments.DenunciationsFragment;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent;
+import com.ericmguimaraes.brasilsincero.model.Convenio;
+import com.google.gson.Gson;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -26,6 +28,17 @@ public class ConvenioDetailsActivity extends AppCompatActivity implements Denunc
     @Bind(R.id.fab)
     FloatingActionButton fab;
 
+    @Bind(R.id.programaContent)
+    public TextView nm_programa;
+
+    @Bind(R.id.proponenteContent)
+    public TextView nm_proponente;
+
+    @Bind(R.id.responsavelContent)
+    public TextView nm_respons_proponente;
+
+    @Bind(R.id.valorContent)
+    public TextView vl_global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +71,22 @@ public class ConvenioDetailsActivity extends AppCompatActivity implements Denunc
                 startActivity(intent);
             }
         });
+
+        Bundle extras = getIntent().getExtras();
+        if(extras!=null){
+            String json = extras.getString("convenio");
+            if(json!=null && !json.isEmpty())
+                populateConvenioView(json);
+        }
+    }
+
+    private void populateConvenioView(String json) {
+        Gson gson = new Gson();
+        Convenio convenio = gson.fromJson(json, Convenio.class);
+        nm_programa.setText(convenio.nm_programa);
+        nm_proponente.setText(convenio.nm_proponente);
+        nm_respons_proponente.setText(convenio.nm_respons_proponente);
+        vl_global.setText(convenio.vl_global);
     }
 
     @Override
