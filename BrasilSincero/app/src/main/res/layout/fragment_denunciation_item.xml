@@ -116,35 +116,48 @@
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp">
 
-            <ImageView
-                android:id="@+id/like"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_like_deactivated"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"/>
-
             <TextView
                 android:id="@+id/likesValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                />
+
+            <ImageView
+                android:id="@+id/like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_like_deactivated"
+                android:layout_alignBottom="@id/likesValue"
+                android:layout_toRightOf="@id/likesValue"
+                android:layout_toEndOf="@id/likesValue" />
+
+            <TextView
+                android:id="@+id/dislikesValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20sp"
                 android:layout_alignBottom="@id/like"
                 android:layout_toRightOf="@id/like"
-                android:layout_toEndOf="@id/like"
-                />
+                android:layout_toEndOf="@id/like"/>
 
             <ImageView
                 android:id="@+id/dislike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_dislike_deactivated"
-                android:layout_alignBottom="@id/likesValue"
-                android:layout_toRightOf="@id/likesValue"
-                android:layout_toEndOf="@id/likesValue"
+                android:layout_alignBottom="@id/dislikesValue"
+                android:layout_toRightOf="@id/dislikesValue"
+                android:layout_toEndOf="@id/dislikesValue"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"/>
+
+
+                />
         </RelativeLayout>
 
         <TextView

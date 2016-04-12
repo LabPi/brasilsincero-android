@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.ericmguimaraes.brasilsincero.FilterActivity;
 import com.ericmguimaraes.brasilsincero.R;
@@ -29,6 +30,7 @@ import com.google.gson.reflect.TypeToken;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -56,6 +58,10 @@ public class ConvenioFragment extends Fragment implements SearchView.OnQueryText
 
     @Bind(R.id.list)
     RecyclerView recyclerView;
+
+    @Bind(R.id.status)
+    TextView statusTextView;
+
     private boolean isConvenio = true;
 
     MyConvenioRecyclerViewAdapter adapter;
@@ -111,7 +117,7 @@ public class ConvenioFragment extends Fragment implements SearchView.OnQueryText
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        adapter = new MyConvenioRecyclerViewAdapter(getConvenios(), mListener, getActivity(), isConvenio);
+        adapter = new MyConvenioRecyclerViewAdapter(getConvenios("convenios_ranking_nacional.json"), mListener, getActivity(), isConvenio);
         recyclerView.setAdapter(adapter);
         return view;
     }
@@ -140,14 +146,29 @@ public class ConvenioFragment extends Fragment implements SearchView.OnQueryText
                 });
     }
 
-    private List<Convenio> getConvenios() {
+    private List<Convenio> getConvenios(String fileName) {
         Gson gson = new Gson();
-        String json = loadJSONFromAsset("convenios_ranking_nacional.json");
+        String json = loadJSONFromAsset(fileName);
         Type listType = new TypeToken<List<Convenio>>() {}.getType();
         convenios = new Gson().fromJson(json, listType);
         return convenios;
     }
 
+    public void showNationalRanking(){
+        getConvenios("convenios_ranking_nacional.json");
+        adapter.setData(convenios);
+
+    }
+
+    public void showRegionalRanking(){
+        getConvenios("convenios_ranking_nacional.json");
+        adapter.setData(convenios);
+    }
+
+    public void showStateRanking(){
+        getConvenios("convenios_ranking_nacional.json");
+        adapter.setData(convenios);
+    }
 
     @Override
     public void onAttach(Context context) {

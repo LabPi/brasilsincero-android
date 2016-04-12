@@ -88,6 +88,11 @@ public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConven
         notifyDataSetChanged();
     }
 
+    public void setData(List<Convenio> newList){
+        mValues = newList;
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public Convenio mItem;

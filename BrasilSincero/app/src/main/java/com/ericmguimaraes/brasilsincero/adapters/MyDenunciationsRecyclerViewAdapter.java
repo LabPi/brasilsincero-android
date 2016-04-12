@@ -79,6 +79,9 @@ public class MyDenunciationsRecyclerViewAdapter extends RecyclerView.Adapter<MyD
         @Bind(R.id.likesValue)
         TextView likeValue;
 
+        @Bind(R.id.dislikesValue)
+        TextView dislikeValue;
+
         public ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
@@ -122,8 +125,10 @@ public class MyDenunciationsRecyclerViewAdapter extends RecyclerView.Adapter<MyD
         private void updateCounter(){
             if(like){
                 likeValue.setText("1");
+                dislikeValue.setText("0");
             } else {
-                likeValue.setText("-1");
+                likeValue.setText("0");
+                dislikeValue.setText("1");
             }
         }
 
