@@ -54,7 +54,7 @@
         <activity
             android:name=".DenuntiantionRegistActivity"
             android:label="@string/title_activity_denuntiantion_regist"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

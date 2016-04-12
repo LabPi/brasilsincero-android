@@ -65,7 +65,9 @@ public class DenunciationsFragment extends Fragment {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(context);
+                linearLayoutManager.setAutoMeasureEnabled(true);
+                recyclerView.setLayoutManager(linearLayoutManager);
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
