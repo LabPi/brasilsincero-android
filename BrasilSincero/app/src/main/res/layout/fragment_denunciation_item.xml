@@ -128,7 +128,7 @@
                 android:id="@+id/likesValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="112"
+                android:text="0"
                 android:textSize="20sp"
                 android:layout_alignBottom="@id/like"
                 android:layout_toRightOf="@id/like"

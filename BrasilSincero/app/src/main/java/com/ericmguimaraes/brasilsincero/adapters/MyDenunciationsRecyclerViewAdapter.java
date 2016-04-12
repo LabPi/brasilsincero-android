@@ -90,7 +90,8 @@ public class MyDenunciationsRecyclerViewAdapter extends RecyclerView.Adapter<MyD
                 @Override
                 public void onClick(View v) {
                     if(isFirstClick || !like) {
-                        likeImageView.setBackgroundResource(R.drawable.ic_like_activated);
+                        likeImageView.setImageResource(android.R.color.transparent);
+                        likeImageView.setBackgroundResource(R.drawable.ic_action_icone_like);
                         dislikeImageView.setBackgroundResource(R.drawable.ic_dislike_deactivated);
                         isFirstClick = false;
                         like = true;
@@ -103,7 +104,7 @@ public class MyDenunciationsRecyclerViewAdapter extends RecyclerView.Adapter<MyD
                 @Override
                 public void onClick(View v) {
                     if(isFirstClick || like) {
-                        dislikeImageView.setBackgroundResource(R.drawable.ic_dislike_activated);
+                        dislikeImageView.setBackgroundResource(R.drawable.ic_action_icone_dislike);
                         likeImageView.setBackgroundResource(R.drawable.ic_like_deactivated);
                         isFirstClick = false;
                         like = false;
@@ -120,9 +121,9 @@ public class MyDenunciationsRecyclerViewAdapter extends RecyclerView.Adapter<MyD
 
         private void updateCounter(){
             if(like){
-                likeValue.setText("113");
+                likeValue.setText("1");
             } else {
-                likeValue.setText("111");
+                likeValue.setText("-1");
             }
         }
 
