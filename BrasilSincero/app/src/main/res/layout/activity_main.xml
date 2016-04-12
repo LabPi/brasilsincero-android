@@ -87,9 +87,9 @@
                 fab:fab_size="mini"
                 fab:fab_label="Ranking Nacional"
                 fab:fab_progress_backgroundColor="@android:color/transparent"
-                app:fab_colorNormal="@android:color/transparent"
-                app:fab_colorPressed="@android:color/transparent"
-                app:fab_colorRipple="@android:color/transparent"/>
+                app:fab_colorNormal="@color/colorPrimary"
+                app:fab_colorPressed="@color/colorPrimary"
+                app:fab_colorRipple="@color/colorPrimary"/>
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/fab_regional"
@@ -99,9 +99,9 @@
                 fab:fab_size="mini"
                 fab:fab_label="Ranking Regional"
                 fab:fab_progress_backgroundColor="@android:color/transparent"
-                app:fab_colorNormal="@android:color/transparent"
-                app:fab_colorPressed="@android:color/transparent"
-                app:fab_colorRipple="@android:color/transparent"/>
+                app:fab_colorNormal="@color/colorPrimary"
+                app:fab_colorPressed="@color/colorPrimary"
+                app:fab_colorRipple="@color/colorPrimary"/>
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/fab_state"
@@ -111,9 +111,9 @@
                 fab:fab_size="mini"
                 fab:fab_label="Ranking Estadual"
                 fab:fab_progress_backgroundColor="@android:color/transparent"
-                app:fab_colorNormal="@android:color/transparent"
-                app:fab_colorPressed="@android:color/transparent"
-                app:fab_colorRipple="@android:color/transparent"/>
+                app:fab_colorNormal="@color/colorPrimary"
+                app:fab_colorPressed="@color/colorPrimary"
+                app:fab_colorRipple="@color/colorPrimary"/>
 
         </com.github.clans.fab.FloatingActionMenu>
 

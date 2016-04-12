@@ -6,30 +6,19 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ericmguimaraes.brasilsincero.FilterActivity;
 import com.ericmguimaraes.brasilsincero.R;
-import com.ericmguimaraes.brasilsincero.adapters.MyConvenioRecyclerViewAdapter;
-import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent;
-import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent.DummyItem;
-import com.ericmguimaraes.brasilsincero.model.Convenio;
-import com.github.clans.fab.FloatingActionButton;
+import com.ericmguimaraes.brasilsincero.adapters.MyTransferenciaRecyclerViewAdapter;
+import com.ericmguimaraes.brasilsincero.model.Transferencia;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import butterknife.Bind;
@@ -41,7 +30,7 @@ import butterknife.ButterKnife;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class ConvenioFragment extends Fragment {
+public class TransferenciaFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -51,27 +40,27 @@ public class ConvenioFragment extends Fragment {
 
     @Bind(R.id.list)
     RecyclerView recyclerView;
-    private boolean isConvenio = true;
+    private boolean isTransferencia = true;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ConvenioFragment() {
+    public TransferenciaFragment() {
     }
 
-    public static ConvenioFragment newInstance(boolean isConvenio) {
-        ConvenioFragment fragment = new ConvenioFragment();
+    public static TransferenciaFragment newInstance(boolean isTransferencia) {
+        TransferenciaFragment fragment = new TransferenciaFragment();
         Bundle args = new Bundle();
-        args.putBoolean("isConvenio", isConvenio);
+        args.putBoolean("isTransferencia", isTransferencia);
         fragment.setArguments(args);
         return fragment;
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static ConvenioFragment newInstance(int columnCount) {
-        ConvenioFragment fragment = new ConvenioFragment();
+    public static TransferenciaFragment newInstance(int columnCount) {
+        TransferenciaFragment fragment = new TransferenciaFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -84,14 +73,14 @@ public class ConvenioFragment extends Fragment {
 
         if (getArguments() != null) {
             mColumnCount = 0;
-            isConvenio = getArguments().getBoolean("isConvenio");
+            isTransferencia = getArguments().getBoolean("isTransferencia");
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_convenio_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_transferencia_list, container, false);
         ButterKnife.bind(this,view);
 
         Context context = view.getContext();
@@ -100,16 +89,16 @@ public class ConvenioFragment extends Fragment {
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        recyclerView.setAdapter(new MyConvenioRecyclerViewAdapter(getConvenios(), mListener, getActivity(), isConvenio));
+        recyclerView.setAdapter(new MyTransferenciaRecyclerViewAdapter(getTransferencias(), mListener, getActivity(), isTransferencia));
         return view;
     }
 
-    private List<Convenio> getConvenios() {
+    private List<Transferencia> getTransferencias() {
         Gson gson = new Gson();
-        String json = loadJSONFromAsset("convenios_ranking_nacional.json");
-        Type listType = new TypeToken<List<Convenio>>() {}.getType();
-        List<Convenio> convenios = new Gson().fromJson(json, listType);
-        return convenios;
+        String json = loadJSONFromAsset("transferencias_ranking_nacional.json");
+        Type listType = new TypeToken<List<Transferencia>>() {}.getType();
+        List<Transferencia> transferencias = new Gson().fromJson(json, listType);
+        return transferencias;
     }
 
 
@@ -142,7 +131,7 @@ public class ConvenioFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(Convenio item);
+        void onListFragmentInteraction(Transferencia item);
     }
 
     public String loadJSONFromAsset(String filename) {

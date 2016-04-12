@@ -9,7 +9,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.ericmguimaraes.brasilsincero.fragments.TransferenciaFragment;
 import com.ericmguimaraes.brasilsincero.model.Convenio;
+import com.ericmguimaraes.brasilsincero.model.Transferencia;
 import com.github.clans.fab.FloatingActionButton;
 
 import android.support.design.widget.NavigationView;
@@ -39,7 +41,7 @@ import com.github.clans.fab.FloatingActionMenu;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements ConvenioFragment.OnListFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements ConvenioFragment.OnListFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener, TransferenciaFragment.OnListFragmentInteractionListener {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -111,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(ConvenioFragment.newInstance(true), "Convênios");
-        adapter.addFragment(ConvenioFragment.newInstance(false), "Transferências");
+        adapter.addFragment(TransferenciaFragment.newInstance(false), "Transferências");
         viewPager.setAdapter(adapter);
     }
 
@@ -202,4 +204,8 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
         }
     }
 
+    @Override
+    public void onListFragmentInteraction(Transferencia item) {
+
+    }
 }

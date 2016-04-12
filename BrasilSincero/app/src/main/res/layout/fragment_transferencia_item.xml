@@ -40,7 +40,7 @@
         android:textSize="16sp"
         android:layout_toRightOf="@id/bandeira_image"
         android:layout_toEndOf="@id/bandeira_image"
-        android:text="MONTE MORIA..."
+        android:text="Resíduos Sólidos Urb"
         />
 
     <TextView
@@ -54,7 +54,7 @@
         android:layout_alignStart="@id/titleText"
         android:layout_alignLeft="@id/titleText"
         android:layout_below="@id/titleText"
-        android:text="SENADOR GUIOMARD - AC"
+        android:text="SEBERI - RS"
         android:textColor="@color/secondary_text"
         />
 
@@ -68,7 +68,7 @@
         android:textSize="16sp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="R$ 87.000,70"
+        android:text="R$ 360.000,00"
         />
 
     <TextView
@@ -83,7 +83,7 @@
         android:layout_alignEnd="@id/valueText"
         android:layout_alignRight="@id/valueText"
         android:textColor="@color/secondary_text"
-        android:text="08/08/2014"
+        android:text="30/07/2008"
         />
 
 
