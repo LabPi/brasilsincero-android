@@ -15,6 +15,7 @@ import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent.DummyItem;
 import com.ericmguimaraes.brasilsincero.model.Convenio;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -27,7 +28,7 @@ import butterknife.ButterKnife;
  */
 public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConvenioRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Convenio> mValues;
+    private List<Convenio> mValues;
     private final OnListFragmentInteractionListener mListener;
     private Activity activity;
     boolean isConvenio = true;
@@ -79,6 +80,12 @@ public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConven
     @Override
     public int getItemCount() {
         return mValues.size();
+    }
+
+    public void setFilter(List<Convenio> countryModels) {
+        mValues = new ArrayList<>();
+        mValues.addAll(countryModels);
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

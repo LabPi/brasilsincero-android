@@ -3,13 +3,18 @@ package com.ericmguimaraes.brasilsincero.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import com.ericmguimaraes.brasilsincero.FilterActivity;
 import com.ericmguimaraes.brasilsincero.R;
@@ -41,7 +46,7 @@ import butterknife.ButterKnife;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class ConvenioFragment extends Fragment {
+public class ConvenioFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -52,6 +57,10 @@ public class ConvenioFragment extends Fragment {
     @Bind(R.id.list)
     RecyclerView recyclerView;
     private boolean isConvenio = true;
+
+    MyConvenioRecyclerViewAdapter adapter;
+
+    List<Convenio> convenios;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -86,6 +95,8 @@ public class ConvenioFragment extends Fragment {
             mColumnCount = 0;
             isConvenio = getArguments().getBoolean("isConvenio");
         }
+
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -100,15 +111,40 @@ public class ConvenioFragment extends Fragment {
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        recyclerView.setAdapter(new MyConvenioRecyclerViewAdapter(getConvenios(), mListener, getActivity(), isConvenio));
+        adapter = new MyConvenioRecyclerViewAdapter(getConvenios(), mListener, getActivity(), isConvenio);
+        recyclerView.setAdapter(adapter);
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        final MenuItem item = menu.findItem(R.id.search);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        searchView.setOnQueryTextListener(this);
+
+        MenuItemCompat.setOnActionExpandListener(item,
+                new MenuItemCompat.OnActionExpandListener() {
+                    @Override
+                    public boolean onMenuItemActionCollapse(MenuItem item) {
+                        // Do something when collapsed
+                        adapter.setFilter(convenios);
+                        return true; // Return true to collapse action view
+                    }
+
+                    @Override
+                    public boolean onMenuItemActionExpand(MenuItem item) {
+                        // Do something when expanded
+                        return true; // Return true to expand action view
+                    }
+                });
     }
 
     private List<Convenio> getConvenios() {
         Gson gson = new Gson();
         String json = loadJSONFromAsset("convenios_ranking_nacional.json");
         Type listType = new TypeToken<List<Convenio>>() {}.getType();
-        List<Convenio> convenios = new Gson().fromJson(json, listType);
+        convenios = new Gson().fromJson(json, listType);
         return convenios;
     }
 
@@ -128,6 +164,36 @@ public class ConvenioFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    private List<Convenio> filter(List<Convenio> convenios, String newText) {
+        newText = newText.toLowerCase();
+        final List<Convenio> filteredModelList = new ArrayList<>();
+        for (Convenio model : convenios) {
+            String text = model.nm_respons_proponente.toLowerCase();
+            text+=model.vl_global.toLowerCase();
+            text+=model.uf_proponente.toLowerCase();
+            text+=model.dt_proposta.toLowerCase();
+            text+=model.nm_municipio_proponente.toLowerCase();
+            text+=model.uf_proponente.toLowerCase();
+            text+=model.nm_programa.toLowerCase();
+            if (text.contains(newText)) {
+                filteredModelList.add(model);
+            }
+        }
+        return filteredModelList;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        final List<Convenio> filteredModelList = filter(convenios, newText);
+        adapter.setFilter(filteredModelList);
+        return false;
     }
 
     /**

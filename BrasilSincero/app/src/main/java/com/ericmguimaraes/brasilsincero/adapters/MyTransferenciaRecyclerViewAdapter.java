@@ -12,9 +12,11 @@ import com.ericmguimaraes.brasilsincero.TransferenciaDetailsActivity;
 import com.ericmguimaraes.brasilsincero.R;
 import com.ericmguimaraes.brasilsincero.fragments.TransferenciaFragment.OnListFragmentInteractionListener;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent.DummyItem;
+import com.ericmguimaraes.brasilsincero.model.Convenio;
 import com.ericmguimaraes.brasilsincero.model.Transferencia;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -27,7 +29,7 @@ import butterknife.ButterKnife;
  */
 public class MyTransferenciaRecyclerViewAdapter extends RecyclerView.Adapter<MyTransferenciaRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Transferencia> mValues;
+    private List<Transferencia> mValues;
     private final OnListFragmentInteractionListener mListener;
     private Activity activity;
     boolean isTransferencia = true;
@@ -79,6 +81,12 @@ public class MyTransferenciaRecyclerViewAdapter extends RecyclerView.Adapter<MyT
     @Override
     public int getItemCount() {
         return mValues.size();
+    }
+
+    public void setFilter(List<Transferencia> countryModels) {
+        mValues = new ArrayList<>();
+        mValues.addAll(countryModels);
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
