@@ -12,4 +12,5 @@ public class Transferencia {
     public String nm_municipio_convenente;
     public String uf_convenente;
 
+    public String header;
 }

@@ -9,13 +9,13 @@ import java.util.List;
  */
 public class ConvenioRegionRanking {
 
-    List<Convenio> Norte;
-    List<Convenio> Nordeste;
+    public List<Convenio> Norte;
+    public List<Convenio> Nordeste;
 
     @SerializedName("Centro-Oeste")
-    List<Convenio> CentroOeste;
+    public List<Convenio> CentroOeste;
 
-    List<Convenio> Suldeste;
-    List<Convenio> Sul;
+    public List<Convenio> Suldeste;
+    public List<Convenio> Sul;
 
 }

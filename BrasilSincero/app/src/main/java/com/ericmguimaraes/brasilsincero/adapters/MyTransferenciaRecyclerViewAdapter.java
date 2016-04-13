@@ -33,6 +33,8 @@ public class MyTransferenciaRecyclerViewAdapter extends RecyclerView.Adapter<MyT
     private final OnListFragmentInteractionListener mListener;
     private Activity activity;
     boolean isTransferencia = true;
+    private int HEADER_VIEW_ID = 0;
+    private int TRANSACAO_VIEW_ID = 1;
 
     public MyTransferenciaRecyclerViewAdapter(List<Transferencia> items, OnListFragmentInteractionListener listener, Activity activity, boolean isTransferencia) {
         mValues = items;
@@ -44,43 +46,59 @@ public class MyTransferenciaRecyclerViewAdapter extends RecyclerView.Adapter<MyT
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
-        if(isTransferencia)
+        if(viewType==TRANSACAO_VIEW_ID) {
             view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.fragment_transferencia_item, parent, false);
-        else
+            return new TransferenciaViewHolder(view);
+        }
+        else {
             view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.fragment_transferencia_item, parent, false);
-        return new ViewHolder(view);
+                    .inflate(R.layout.header_layout, parent, false);
+            return new HeaderViewHolder(view);
+        }
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        Transferencia c = mValues.get(position);
-        holder.mItem = c;
-        holder.nm_programa.setText(c.nm_identif_favorecido_dl.substring(0,15)+"...");
-        holder.location.setText(c.nm_municipio_convenente+" - "+c.uf_convenente);
-        holder.date.setText(c.dt_emissao_dl);
-        holder.vl_global.setText(c.vl_bruto_dl);
+    public void onBindViewHolder(ViewHolder viewHolder, int position) {
+        Transferencia t = mValues.get(position);
+        if(mValues.get(position).header!=null){
+            HeaderViewHolder headerViewHolder = (HeaderViewHolder) viewHolder;
+            headerViewHolder.content.setText(t.header);
+        } else {
+            final TransferenciaViewHolder holder = (TransferenciaViewHolder) viewHolder;
+            holder.mItem = t;
+            holder.nm_programa.setText(t.nm_identif_favorecido_dl.substring(0, 15) + "...");
+            holder.location.setText(t.nm_municipio_convenente + " - " + t.uf_convenente);
+            holder.date.setText(t.dt_emissao_dl);
+            holder.vl_global.setText(t.vl_bruto_dl);
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(activity, TransferenciaDetailsActivity.class);
-                Gson gson = new Gson();
-                intent.putExtra("transferencia",gson.toJson(holder.mItem, Transferencia.class));
-                activity.startActivity(intent);
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
+            holder.mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(activity, TransferenciaDetailsActivity.class);
+                    Gson gson = new Gson();
+                    intent.putExtra("transferencia", gson.toJson(holder.mItem, Transferencia.class));
+                    activity.startActivity(intent);
+                    if (null != mListener) {
+                        // Notify the active callbacks interface (the activity, if the
+                        // fragment is attached to one) that an item has been selected.
+                        mListener.onListFragmentInteraction(holder.mItem);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     @Override
     public int getItemCount() {
         return mValues.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if(mValues.get(position).header!=null)
+            return HEADER_VIEW_ID;
+        return TRANSACAO_VIEW_ID;
     }
 
     public void setFilter(List<Transferencia> countryModels) {
@@ -89,7 +107,19 @@ public class MyTransferenciaRecyclerViewAdapter extends RecyclerView.Adapter<MyT
         notifyDataSetChanged();
     }
 
+    public void setData(List<Transferencia> newList){
+        mValues = newList;
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
+    public class TransferenciaViewHolder extends ViewHolder {
         public final View mView;
         public Transferencia mItem;
 
@@ -105,11 +135,27 @@ public class MyTransferenciaRecyclerViewAdapter extends RecyclerView.Adapter<MyT
         @Bind(R.id.valueText)
         public TextView vl_global;
 
-        public ViewHolder(View view) {
+        public TransferenciaViewHolder(View view) {
             super(view);
             mView = view;
             ButterKnife.bind(this, view);
         }
 
+    }
+
+    public class HeaderViewHolder extends ViewHolder {
+
+        public final View mView;
+
+        public Convenio mItem;
+
+        @Bind(R.id.content)
+        public TextView content;
+
+        public HeaderViewHolder(View view) {
+            super(view);
+            mView = view;
+            ButterKnife.bind(this, view);
+        }
     }
 }

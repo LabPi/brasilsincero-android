@@ -14,4 +14,6 @@ public class Convenio {
     public String nm_municipio_proponente;
     public String uf_proponente;
 
+    public String header;
+
 }

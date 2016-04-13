@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ericmguimaraes.brasilsincero.FilterActivity;
 import com.ericmguimaraes.brasilsincero.R;
@@ -24,6 +25,7 @@ import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent.DummyItem;
 import com.ericmguimaraes.brasilsincero.model.Convenio;
 import com.ericmguimaraes.brasilsincero.model.ConvenioRegionRanking;
+import com.ericmguimaraes.brasilsincero.model.ConvenioStateRanking;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -157,18 +159,76 @@ public class ConvenioFragment extends Fragment implements SearchView.OnQueryText
     public void showNationalRanking(){
         getConvenios("convenios_ranking_nacional.json");
         adapter.setData(convenios);
-
     }
 
     public void showRegionalRanking(){
-        String json = loadJSONFromAsset("convenios_regioes.json");
-        ConvenioRegionRanking convenioRegionRanking = new Gson().fromJson(json, ConvenioRegionRanking.class);
-        adapter.setData(convenios);
+        try {
+            String json = loadJSONFromAsset("convenios_regioes.json");
+            ConvenioRegionRanking convenioRegionRanking = new Gson().fromJson(json, ConvenioRegionRanking.class);
+            List<Convenio> list = new ArrayList<>();
+            list.addAll(addHeader(convenioRegionRanking.Norte, "Norte"));
+            list.addAll(addHeader(convenioRegionRanking.Nordeste, "Nordeste"));
+            list.addAll(addHeader(convenioRegionRanking.CentroOeste, "Centro-Oeste"));
+            list.addAll(addHeader(convenioRegionRanking.Suldeste, "Suldeste"));
+            list.addAll(addHeader(convenioRegionRanking.Sul, "Sul"));
+            convenios = list;
+            adapter.setData(convenios);
+        } catch (Exception e){
+            e.printStackTrace();
+            Toast t = Toast.makeText(getContext(),"Ops, tivemos um problema buscando os dados", Toast.LENGTH_SHORT);
+            t.show();
+        }
+    }
+
+    public List<Convenio> addHeader(List<Convenio> convenios, String headerstr){
+        List<Convenio> list = new ArrayList<>();
+        Convenio header = new Convenio();
+        header.header = headerstr;
+        if(convenios!=null && !convenios.isEmpty()) {
+            list.add(header);
+            list.addAll(convenios);
+        }
+        return list;
     }
 
     public void showStateRanking(){
-        getConvenios("convenios_ranking_nacional.json");
-        adapter.setData(convenios);
+        try {
+            String json = loadJSONFromAsset("convenios_estados.json");
+            ConvenioStateRanking convenioStateRanking = new Gson().fromJson(json, ConvenioStateRanking.class);
+            List<Convenio> list = new ArrayList<>();
+            list.addAll(addHeader(convenioStateRanking.AC, "AC"));
+            list.addAll(addHeader(convenioStateRanking.AL, "AL"));
+            list.addAll(addHeader(convenioStateRanking.AM, "AM"));
+            list.addAll(addHeader(convenioStateRanking.AP, "AP"));
+            list.addAll(addHeader(convenioStateRanking.BA, "BA"));
+            list.addAll(addHeader(convenioStateRanking.CE, "CE"));
+            list.addAll(addHeader(convenioStateRanking.DF, "DF"));
+            list.addAll(addHeader(convenioStateRanking.ES, "ES"));
+            list.addAll(addHeader(convenioStateRanking.GO, "GO"));
+            list.addAll(addHeader(convenioStateRanking.MA, "MA"));
+            list.addAll(addHeader(convenioStateRanking.MG, "MG"));
+            list.addAll(addHeader(convenioStateRanking.MS, "MS"));
+            list.addAll(addHeader(convenioStateRanking.MT, "MT"));
+            list.addAll(addHeader(convenioStateRanking.PA, "PA"));
+            list.addAll(addHeader(convenioStateRanking.PB, "PB"));
+            list.addAll(addHeader(convenioStateRanking.PE, "PE"));
+            list.addAll(addHeader(convenioStateRanking.PI, "PI"));
+            list.addAll(addHeader(convenioStateRanking.PR, "PR"));
+            list.addAll(addHeader(convenioStateRanking.RJ, "RJ"));
+            list.addAll(addHeader(convenioStateRanking.RN, "RN"));
+            list.addAll(addHeader(convenioStateRanking.RO, "RO"));
+            list.addAll(addHeader(convenioStateRanking.RR, "RR"));
+            list.addAll(addHeader(convenioStateRanking.RS, "RS"));
+            list.addAll(addHeader(convenioStateRanking.SC, "SC"));
+            list.addAll(addHeader(convenioStateRanking.SE, "SE"));
+            list.addAll(addHeader(convenioStateRanking.TO, "TO"));
+            convenios = list;
+            adapter.setData(convenios);
+        } catch (Exception e){
+            e.printStackTrace();
+            Toast t = Toast.makeText(getContext(),"Ops, tivemos um problema buscando os dados", Toast.LENGTH_SHORT);
+            t.show();
+        }
     }
 
     @Override
@@ -197,15 +257,17 @@ public class ConvenioFragment extends Fragment implements SearchView.OnQueryText
         newText = newText.toLowerCase();
         final List<Convenio> filteredModelList = new ArrayList<>();
         for (Convenio model : convenios) {
-            String text = model.nm_respons_proponente.toLowerCase();
-            text+=model.vl_global.toLowerCase();
-            text+=model.uf_proponente.toLowerCase();
-            text+=model.dt_proposta.toLowerCase();
-            text+=model.nm_municipio_proponente.toLowerCase();
-            text+=model.uf_proponente.toLowerCase();
-            text+=model.nm_programa.toLowerCase();
-            if (text.contains(newText)) {
-                filteredModelList.add(model);
+            if(model.header==null) {
+                String text = model.nm_respons_proponente.toLowerCase();
+                text += model.vl_global.toLowerCase();
+                text += model.uf_proponente.toLowerCase();
+                text += model.dt_proposta.toLowerCase();
+                text += model.nm_municipio_proponente.toLowerCase();
+                text += model.uf_proponente.toLowerCase();
+                text += model.nm_programa.toLowerCase();
+                if (text.contains(newText)) {
+                    filteredModelList.add(model);
+                }
             }
         }
         return filteredModelList;
@@ -247,6 +309,10 @@ public class ConvenioFragment extends Fragment implements SearchView.OnQueryText
             return null;
         }
         return json;
+    }
+
+    public void setListStatus(String newStatus){
+        statusTextView.setText(newStatus);
     }
 
 }

@@ -14,12 +14,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ericmguimaraes.brasilsincero.R;
-import com.ericmguimaraes.brasilsincero.adapters.MyConvenioRecyclerViewAdapter;
+import com.ericmguimaraes.brasilsincero.adapters.MyTransferenciaRecyclerViewAdapter;
 import com.ericmguimaraes.brasilsincero.adapters.MyTransferenciaRecyclerViewAdapter;
 import com.ericmguimaraes.brasilsincero.model.Convenio;
 import com.ericmguimaraes.brasilsincero.model.Transferencia;
+import com.ericmguimaraes.brasilsincero.model.Transferencia;
+import com.ericmguimaraes.brasilsincero.model.TransferenciaRegionRanking;
+import com.ericmguimaraes.brasilsincero.model.TransferenciaStateRanking;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -48,7 +53,9 @@ public class TransferenciaFragment extends Fragment implements SearchView.OnQuer
 
     @Bind(R.id.list)
     RecyclerView recyclerView;
-    private boolean isTransferencia = true;
+
+    @Bind(R.id.status)
+    TextView statusTextView;
 
     MyTransferenciaRecyclerViewAdapter adapter;
     List<Transferencia> transferencias;
@@ -84,7 +91,6 @@ public class TransferenciaFragment extends Fragment implements SearchView.OnQuer
 
         if (getArguments() != null) {
             mColumnCount = 0;
-            isTransferencia = getArguments().getBoolean("isTransferencia");
         }
 
         setHasOptionsMenu(true);
@@ -102,14 +108,13 @@ public class TransferenciaFragment extends Fragment implements SearchView.OnQuer
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        adapter = new MyTransferenciaRecyclerViewAdapter(getTransferencias(), mListener, getActivity(), isTransferencia);
+        adapter = new MyTransferenciaRecyclerViewAdapter(getTransferencias("transferencias_ranking_nacional.json"), mListener, getActivity(), true);
         recyclerView.setAdapter(adapter);
         return view;
     }
 
-    private List<Transferencia> getTransferencias() {
-        Gson gson = new Gson();
-        String json = loadJSONFromAsset("transferencias_ranking_nacional.json");
+    private List<Transferencia> getTransferencias(String fileName) {
+        String json = loadJSONFromAsset(fileName);
         Type listType = new TypeToken<List<Transferencia>>() {}.getType();
         transferencias = new Gson().fromJson(json, listType);
         return transferencias;
@@ -166,15 +171,17 @@ public class TransferenciaFragment extends Fragment implements SearchView.OnQuer
         newText = newText.toLowerCase();
         final List<Transferencia> filteredModelList = new ArrayList<>();
         for (Transferencia model : transferencias) {
-            String text = model.nm_identif_favorecido_dl.toLowerCase();
-            text+=model.uf_convenente.toLowerCase();
-            text+=model.dt_emissao_dl.toLowerCase();
-            text+=model.nm_identif_favorecido_dl.toLowerCase();
-            text+=model.nm_orgao_concedente.toLowerCase();
-            text+=model.vl_bruto_dl.toLowerCase();
-            text+=model.nm_municipio_convenente.toLowerCase();
-            if (text.contains(newText)) {
-                filteredModelList.add(model);
+            if(model.header==null) {
+                String text = model.nm_identif_favorecido_dl.toLowerCase();
+                text += model.uf_convenente.toLowerCase();
+                text += model.dt_emissao_dl.toLowerCase();
+                text += model.nm_identif_favorecido_dl.toLowerCase();
+                text += model.nm_orgao_concedente.toLowerCase();
+                text += model.vl_bruto_dl.toLowerCase();
+                text += model.nm_municipio_convenente.toLowerCase();
+                if (text.contains(newText)) {
+                    filteredModelList.add(model);
+                }
             }
         }
         return filteredModelList;
@@ -187,16 +194,79 @@ public class TransferenciaFragment extends Fragment implements SearchView.OnQuer
         return false;
     }
 
-    public void showRegionalRanking() {
-
+    public void showNationalRanking(){
+        getTransferencias("transferencias_ranking_nacional.json");
+        adapter.setData(transferencias);
     }
 
-    public void showStateRanking() {
-
+    public void showRegionalRanking(){
+        try {
+            String json = loadJSONFromAsset("transferencias_regioes.json");
+            TransferenciaRegionRanking transferenciaRegionRanking = new Gson().fromJson(json, TransferenciaRegionRanking.class);
+            List<Transferencia> list = new ArrayList<>();
+            list.addAll(addHeader(transferenciaRegionRanking.Norte, "Norte"));
+            list.addAll(addHeader(transferenciaRegionRanking.Nordeste, "Nordeste"));
+            list.addAll(addHeader(transferenciaRegionRanking.CentroOeste, "Centro-Oeste"));
+            list.addAll(addHeader(transferenciaRegionRanking.Suldeste, "Suldeste"));
+            list.addAll(addHeader(transferenciaRegionRanking.Sul, "Sul"));
+            transferencias = list;
+            adapter.setData(transferencias);
+        } catch (Exception e){
+            e.printStackTrace();
+            Toast t = Toast.makeText(getContext(),"Ops, tivemos um problema buscando os dados", Toast.LENGTH_SHORT);
+            t.show();
+        }
     }
 
-    public void showNationalRanking() {
+    public List<Transferencia> addHeader(List<Transferencia> transferencias, String headerstr){
+        List<Transferencia> list = new ArrayList<>();
+        Transferencia header = new Transferencia();
+        header.header = headerstr;
+        if(transferencias!=null && !transferencias.isEmpty()) {
+            list.add(header);
+            list.addAll(transferencias);
+        }
+        return list;
+    }
 
+    public void showStateRanking(){
+        try {
+            String json = loadJSONFromAsset("transferencias_estados.json");
+            TransferenciaStateRanking transferenciaStateRanking = new Gson().fromJson(json, TransferenciaStateRanking.class);
+            List<Transferencia> list = new ArrayList<>();
+            list.addAll(addHeader(transferenciaStateRanking.AC, "AC"));
+            list.addAll(addHeader(transferenciaStateRanking.AL, "AL"));
+            list.addAll(addHeader(transferenciaStateRanking.AM, "AM"));
+            list.addAll(addHeader(transferenciaStateRanking.AP, "AP"));
+            list.addAll(addHeader(transferenciaStateRanking.BA, "BA"));
+            list.addAll(addHeader(transferenciaStateRanking.CE, "CE"));
+            list.addAll(addHeader(transferenciaStateRanking.DF, "DF"));
+            list.addAll(addHeader(transferenciaStateRanking.ES, "ES"));
+            list.addAll(addHeader(transferenciaStateRanking.GO, "GO"));
+            list.addAll(addHeader(transferenciaStateRanking.MA, "MA"));
+            list.addAll(addHeader(transferenciaStateRanking.MG, "MG"));
+            list.addAll(addHeader(transferenciaStateRanking.MS, "MS"));
+            list.addAll(addHeader(transferenciaStateRanking.MT, "MT"));
+            list.addAll(addHeader(transferenciaStateRanking.PA, "PA"));
+            list.addAll(addHeader(transferenciaStateRanking.PB, "PB"));
+            list.addAll(addHeader(transferenciaStateRanking.PE, "PE"));
+            list.addAll(addHeader(transferenciaStateRanking.PI, "PI"));
+            list.addAll(addHeader(transferenciaStateRanking.PR, "PR"));
+            list.addAll(addHeader(transferenciaStateRanking.RJ, "RJ"));
+            list.addAll(addHeader(transferenciaStateRanking.RN, "RN"));
+            list.addAll(addHeader(transferenciaStateRanking.RO, "RO"));
+            list.addAll(addHeader(transferenciaStateRanking.RR, "RR"));
+            list.addAll(addHeader(transferenciaStateRanking.RS, "RS"));
+            list.addAll(addHeader(transferenciaStateRanking.SC, "SC"));
+            list.addAll(addHeader(transferenciaStateRanking.SE, "SE"));
+            list.addAll(addHeader(transferenciaStateRanking.TO, "TO"));
+            transferencias = list;
+            adapter.setData(transferencias);
+        } catch (Exception e){
+            e.printStackTrace();
+            Toast t = Toast.makeText(getContext(),"Ops, tivemos um problema buscando os dados", Toast.LENGTH_SHORT);
+            t.show();
+        }
     }
 
     /**
@@ -228,6 +298,10 @@ public class TransferenciaFragment extends Fragment implements SearchView.OnQuer
             return null;
         }
         return json;
+    }
+
+    public void setListStatus(String newStatus){
+        statusTextView.setText(newStatus);
     }
 
 }

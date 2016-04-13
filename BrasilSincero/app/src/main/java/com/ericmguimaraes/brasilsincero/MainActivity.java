@@ -68,13 +68,6 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
     ConvenioFragment convenioFragment;
     TransferenciaFragment transferenciaFragment;
 
-    View.OnClickListener fabRankingOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            FilterActivity.isRanking = true;
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,31 +85,43 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
         fabNational.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String text = "Ranking nacional ordenado por valor";
                 if(viewPager.getCurrentItem()==0){
                     convenioFragment.showNationalRanking();
+                    convenioFragment.setListStatus(text);
                 } else if(viewPager.getCurrentItem()==1){
                     transferenciaFragment.showNationalRanking();
+                    transferenciaFragment.setListStatus(text);
                 }
+                menufab.close(true);
             }
         });
         fabRegion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String text = "Ranking regional ordenado por valor";
                 if(viewPager.getCurrentItem()==0){
                     convenioFragment.showRegionalRanking();
+                    convenioFragment.setListStatus(text);
                 } else if(viewPager.getCurrentItem()==1){
                     transferenciaFragment.showRegionalRanking();
+                    transferenciaFragment.setListStatus(text);
                 }
+                menufab.close(true);
             }
         });
         fabState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String text = "Ranking estadual ordenado por valor";
                 if(viewPager.getCurrentItem()==0){
                     convenioFragment.showStateRanking();
+                    convenioFragment.setListStatus(text);
                 } else if(viewPager.getCurrentItem()==1){
                     transferenciaFragment.showStateRanking();
+                    transferenciaFragment.setListStatus(text);
                 }
+                menufab.close(true);
             }
         });
 

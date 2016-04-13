@@ -32,6 +32,8 @@ public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConven
     private final OnListFragmentInteractionListener mListener;
     private Activity activity;
     boolean isConvenio = true;
+    private int HEADER_ID = 0;
+    private int CONVENIO_VIEW_ID = 1;
 
     public MyConvenioRecyclerViewAdapter(List<Convenio> items, OnListFragmentInteractionListener listener, Activity activity, boolean isConvenio) {
         mValues = items;
@@ -43,38 +45,53 @@ public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConven
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
-        if(isConvenio)
+        if(viewType==CONVENIO_VIEW_ID) {
             view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.fragment_convenio_item, parent, false);
-        else
+            return new ConvenioViewHolder(view);
+        } else {
             view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.fragment_transferencia_item, parent, false);
-        return new ViewHolder(view);
+                    .inflate(R.layout.header_layout, parent, false);
+            return new HeaderViewHolder(view);
+        }
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, int position) {
         Convenio c = mValues.get(position);
-        holder.mItem = c;
-        holder.nm_programa.setText(c.nm_programa.substring(0,15)+"...");
-        holder.location.setText(c.nm_municipio_proponente+" - "+c.uf_proponente);
-        holder.date.setText(c.dt_proposta);
-        holder.vl_global.setText(c.vl_global);
+        if(mValues.get(position).header!=null){
+            HeaderViewHolder headerViewHolder = (HeaderViewHolder) viewHolder;
+            headerViewHolder.content.setText(c.header);
+        } else {
+            final ConvenioViewHolder holder =  (ConvenioViewHolder) viewHolder;
+            holder.mItem = c;
+            holder.nm_programa.setText(c.nm_programa.substring(0, 15) + "...");
+            holder.location.setText(c.nm_municipio_proponente + " - " + c.uf_proponente);
+            holder.date.setText(c.dt_proposta);
+            holder.vl_global.setText(c.vl_global);
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(activity, ConvenioDetailsActivity.class);
-                Gson gson = new Gson();
-                intent.putExtra("convenio",gson.toJson(holder.mItem, Convenio.class));
-                activity.startActivity(intent);
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
+            holder.mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(activity, ConvenioDetailsActivity.class);
+                    Gson gson = new Gson();
+                    intent.putExtra("convenio", gson.toJson(holder.mItem, Convenio.class));
+                    activity.startActivity(intent);
+                    if (null != mListener) {
+                        // Notify the active callbacks interface (the activity, if the
+                        // fragment is attached to one) that an item has been selected.
+                        mListener.onListFragmentInteraction(holder.mItem);
+                    }
                 }
-            }
-        });
+            });
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if(mValues.get(position).header!=null)
+            return HEADER_ID;
+        return CONVENIO_VIEW_ID;
     }
 
     @Override
@@ -94,6 +111,13 @@ public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConven
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
+    public class ConvenioViewHolder extends ViewHolder {
         public final View mView;
         public Convenio mItem;
 
@@ -109,11 +133,27 @@ public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConven
         @Bind(R.id.valueText)
         public TextView vl_global;
 
-        public ViewHolder(View view) {
+        public ConvenioViewHolder(View view) {
             super(view);
             mView = view;
             ButterKnife.bind(this, view);
         }
-
     }
+
+    public class HeaderViewHolder extends ViewHolder {
+
+        public final View mView;
+
+        public Convenio mItem;
+
+        @Bind(R.id.content)
+        public TextView content;
+
+        public HeaderViewHolder(View view) {
+            super(view);
+            mView = view;
+            ButterKnife.bind(this, view);
+        }
+    }
+
 }
