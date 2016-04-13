@@ -32,6 +32,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.ericmguimaraes.brasilsincero.adapters.ViewPagerAdapter;
 import com.ericmguimaraes.brasilsincero.fragments.ConvenioFragment;
@@ -64,6 +65,9 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
     @Bind(R.id.menu_fab)
     FloatingActionMenu menufab;
 
+    ConvenioFragment convenioFragment;
+    TransferenciaFragment transferenciaFragment;
+
     View.OnClickListener fabRankingOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -85,9 +89,36 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
 
         viewPager.setCurrentItem(0);
 
-        fabNational.setOnClickListener(fabRankingOnClickListener);
-        fabRegion.setOnClickListener(fabRankingOnClickListener);
-        fabState.setOnClickListener(fabRankingOnClickListener);
+        fabNational.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(viewPager.getCurrentItem()==0){
+                    convenioFragment.showNationalRanking();
+                } else if(viewPager.getCurrentItem()==1){
+                    transferenciaFragment.showNationalRanking();
+                }
+            }
+        });
+        fabRegion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(viewPager.getCurrentItem()==0){
+                    convenioFragment.showRegionalRanking();
+                } else if(viewPager.getCurrentItem()==1){
+                    transferenciaFragment.showRegionalRanking();
+                }
+            }
+        });
+        fabState.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(viewPager.getCurrentItem()==0){
+                    convenioFragment.showStateRanking();
+                } else if(viewPager.getCurrentItem()==1){
+                    transferenciaFragment.showStateRanking();
+                }
+            }
+        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -112,8 +143,10 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(ConvenioFragment.newInstance(true), "Convênios");
-        adapter.addFragment(TransferenciaFragment.newInstance(false), "Transferências");
+        convenioFragment = ConvenioFragment.newInstance(true);
+        transferenciaFragment = TransferenciaFragment.newInstance(false);
+        adapter.addFragment(convenioFragment, "Convênios");
+        adapter.addFragment(transferenciaFragment, "Transferências");
         viewPager.setAdapter(adapter);
     }
 
@@ -179,6 +212,10 @@ public class MainActivity extends AppCompatActivity implements ConvenioFragment.
                 break;
             case R.id.nav_graphs :
                 intent = new Intent(this,GraphsActivity.class);
+                break;
+            case R.id.nav_statistics :
+                Toast toast = Toast.makeText(getApplicationContext(),"Desculpe, essa funcionalidade será desenvolvida na proxima versão.", Toast.LENGTH_LONG);
+                toast.show();
                 break;
             case R.id.nav_evaluation :
                 final String appPackageName = getPackageName();

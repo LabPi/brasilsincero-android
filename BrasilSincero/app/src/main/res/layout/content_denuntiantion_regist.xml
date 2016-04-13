@@ -23,12 +23,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            app:theme="@style/BlueAccentTheme">
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/input_numero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lines="8"
+                android:lines="4"
                 android:inputType="textMultiLine"
                 android:hint="Denúncia" />
         </android.support.design.widget.TextInputLayout>
@@ -38,7 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            app:theme="@style/BlueAccentTheme">
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/input_esfera"
                 android:layout_width="match_parent"
@@ -52,7 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            app:theme="@style/BlueAccentTheme">
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/input_qualificacao"
                 android:layout_width="match_parent"
@@ -66,7 +69,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            app:theme="@style/BlueAccentTheme">
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/input_email"
                 android:layout_width="match_parent"
@@ -79,7 +83,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            app:theme="@style/BlueAccentTheme">
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/input_telefone"
                 android:layout_width="match_parent"

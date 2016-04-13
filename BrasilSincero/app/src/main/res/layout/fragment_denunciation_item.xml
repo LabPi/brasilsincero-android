@@ -130,10 +130,12 @@
                 android:id="@+id/like"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_like_deactivated"
+                android:src="@drawable/ic_like_desativado"
                 android:layout_alignBottom="@id/likesValue"
                 android:layout_toRightOf="@id/likesValue"
-                android:layout_toEndOf="@id/likesValue" />
+                android:layout_toEndOf="@id/likesValue"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"/>
 
             <TextView
                 android:id="@+id/dislikesValue"
@@ -141,6 +143,8 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_alignBottom="@id/like"
                 android:layout_toRightOf="@id/like"
                 android:layout_toEndOf="@id/like"/>
@@ -149,15 +153,13 @@
                 android:id="@+id/dislike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_dislike_deactivated"
+                android:src="@drawable/ic_dislike_desativado"
                 android:layout_alignBottom="@id/dislikesValue"
                 android:layout_toRightOf="@id/dislikesValue"
                 android:layout_toEndOf="@id/dislikesValue"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"/>
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"/>
 
-
-                />
         </RelativeLayout>
 
         <TextView

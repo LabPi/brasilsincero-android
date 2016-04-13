@@ -26,6 +26,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_margin="@dimen/activity_horizontal_margin"
         >
         <!--
                 - Número do programa
@@ -41,7 +42,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            app:theme="@style/BlueAccentTheme">
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/input_numero"
                 android:layout_width="match_parent"
@@ -50,48 +52,48 @@
                 android:hint="Número do programa" />
         </android.support.design.widget.TextInputLayout>
 
-        <!--  Esfera -->
-        <android.support.design.widget.TextInputLayout
+        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+            android:id="@+id/esfera_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/input_esfera"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="Esfera" />
-        </android.support.design.widget.TextInputLayout>
-
-        <!--  Esfera -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/input_qualificacao"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="Qualificação do proponente" />
-        </android.support.design.widget.TextInputLayout>
-
-        <Spinner
-            android:id="@+id/states_spinner"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/activity_vertical_margin"
-            android:layout_gravity="center_horizontal"
+            android:hint="Esfera"
             />
 
-        <Spinner
-            android:id="@+id/regions_spinner"
-            android:layout_width="200dp"
+        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+            android:id="@+id/proponente_spinner"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/activity_vertical_margin"
-            android:layout_gravity="center_horizontal"/>
+            android:hint="Qualificação do Proponente"
+            />
+
+        <!--  cidade -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:theme="@style/BlueAccentTheme">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/input_cidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Cidade" />
+        </android.support.design.widget.TextInputLayout>
+
+        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+            android:id="@+id/states_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Estado"
+            />
+
+        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+            android:id="@+id/regions_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Região"
+            />
 
         <Button
             android:id="@+id/confirmationBtn"

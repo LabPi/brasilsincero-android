@@ -61,11 +61,6 @@ public class ConvenioDetailsActivity extends AppCompatActivity implements Denunc
             }
         });
 
-        Drawable img = null;
-        img = ContextCompat.getDrawable(getApplicationContext(), R.drawable.icone_denuncias);
-        img.setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
-        fab.setImageDrawable(img);
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

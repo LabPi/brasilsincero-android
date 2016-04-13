@@ -187,6 +187,18 @@ public class TransferenciaFragment extends Fragment implements SearchView.OnQuer
         return false;
     }
 
+    public void showRegionalRanking() {
+
+    }
+
+    public void showStateRanking() {
+
+    }
+
+    public void showNationalRanking() {
+
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

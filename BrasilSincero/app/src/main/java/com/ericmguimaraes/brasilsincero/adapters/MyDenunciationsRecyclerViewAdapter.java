@@ -94,8 +94,8 @@ public class MyDenunciationsRecyclerViewAdapter extends RecyclerView.Adapter<MyD
                 public void onClick(View v) {
                     if(isFirstClick || !like) {
                         likeImageView.setImageResource(android.R.color.transparent);
-                        likeImageView.setBackgroundResource(R.drawable.ic_action_icone_like);
-                        dislikeImageView.setBackgroundResource(R.drawable.ic_dislike_deactivated);
+                        likeImageView.setBackgroundResource(R.drawable.ic_like_ativado);
+                        dislikeImageView.setBackgroundResource(R.drawable.ic_dislike_desativado);
                         isFirstClick = false;
                         like = true;
                         updateCounter();
@@ -107,8 +107,8 @@ public class MyDenunciationsRecyclerViewAdapter extends RecyclerView.Adapter<MyD
                 @Override
                 public void onClick(View v) {
                     if(isFirstClick || like) {
-                        dislikeImageView.setBackgroundResource(R.drawable.ic_action_icone_dislike);
-                        likeImageView.setBackgroundResource(R.drawable.ic_like_deactivated);
+                        dislikeImageView.setBackgroundResource(R.drawable.ic_dislike_ativado);
+                        likeImageView.setBackgroundResource(R.drawable.ic_like_desativado);
                         isFirstClick = false;
                         like = false;
                         updateCounter();

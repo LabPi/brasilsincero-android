@@ -19,6 +19,9 @@ public class GraphsActivity extends AppCompatActivity {
     @Bind(R.id.graph2)
     ImageView graph2;
 
+    @Bind(R.id.graph3)
+    ImageView graph3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +41,9 @@ public class GraphsActivity extends AppCompatActivity {
             }
         });
 
-        graph1.setBackgroundResource(R.drawable.graph1);
-        graph2.setBackgroundResource(R.drawable.graph2);
+        graph1.setBackgroundResource(R.drawable.grafico1);
+        graph2.setBackgroundResource(R.drawable.grafico2);
+        graph3.setBackgroundResource(R.drawable.grafico3);
 
     }
 

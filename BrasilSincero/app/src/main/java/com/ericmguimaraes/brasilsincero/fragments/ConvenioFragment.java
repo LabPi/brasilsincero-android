@@ -23,6 +23,7 @@ import com.ericmguimaraes.brasilsincero.adapters.MyConvenioRecyclerViewAdapter;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent;
 import com.ericmguimaraes.brasilsincero.fragments.dummy.DummyContent.DummyItem;
 import com.ericmguimaraes.brasilsincero.model.Convenio;
+import com.ericmguimaraes.brasilsincero.model.ConvenioRegionRanking;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -147,7 +148,6 @@ public class ConvenioFragment extends Fragment implements SearchView.OnQueryText
     }
 
     private List<Convenio> getConvenios(String fileName) {
-        Gson gson = new Gson();
         String json = loadJSONFromAsset(fileName);
         Type listType = new TypeToken<List<Convenio>>() {}.getType();
         convenios = new Gson().fromJson(json, listType);
@@ -161,7 +161,8 @@ public class ConvenioFragment extends Fragment implements SearchView.OnQueryText
     }
 
     public void showRegionalRanking(){
-        getConvenios("convenios_ranking_nacional.json");
+        String json = loadJSONFromAsset("convenios_regioes.json");
+        ConvenioRegionRanking convenioRegionRanking = new Gson().fromJson(json, ConvenioRegionRanking.class);
         adapter.setData(convenios);
     }
 
