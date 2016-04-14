@@ -64,8 +64,8 @@ versões Android e iOS.
 
 ### Vídeo Demonstração iOS
 
-[![Brasil Sincero](http://img.youtube.com/vi/gDWC7uboP4c/0.jpg)](https://www.youtube.com/watch?v=gDWC7uboP4c "Brasil Sincero")
+Em Breve!
 
 ### Vídeo Demonstração Android
 
-[![Brasil Sincero](http://img.youtube.com/vi/gDWC7uboP4c/0.jpg)](https://www.youtube.com/watch?v=gDWC7uboP4c "Brasil Sincero")
+Em Breve!
