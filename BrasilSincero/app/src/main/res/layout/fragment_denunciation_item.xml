@@ -109,22 +109,12 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignBottom="@id/denunciationTitleText"
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp">
-
-            <TextView
-                android:id="@+id/likesValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="20sp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                />
 
             <ImageView
                 android:id="@+id/like"
@@ -161,6 +151,17 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginStart="5dp"
                 android:scaleType="fitStart"/>
+
+            <TextView
+                android:id="@+id/likesValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                />
+
 
         </LinearLayout>
 
