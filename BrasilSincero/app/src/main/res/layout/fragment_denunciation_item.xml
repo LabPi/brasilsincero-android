@@ -103,7 +103,7 @@
             android:textSize="20sp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:text="Denuncia"
+            android:text="Denúncia"
             android:layout_below="@id/locationText"
             />
 
@@ -174,8 +174,7 @@
             android:textSize="16sp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper, mauris sed laoreet lacinia, dui diam feugiat felis, fringilla faucibus libero felis in ligula. Aenean semper libero turpis, ut facilisis odio consectetur a. Phasellus eget mi nec lectus mollis volutpat. Sed tempor laoreet sem, eu pharetra turpis tempus convallis. Nullam ac lobortis elit. Quisque pharetra magna ipsum, semper egestas nisl aliquam at. Sed pharetra rhoncus purus sit amet rhoncus."
-            android:layout_below="@id/denunciationTitleText"
+            android:text="O Ministério Público deveria investigar essa transferência pois minha cidade é muito pequena e nunca ocorreu a obra mencionada. Além disso o valor é muito alto, suspeito que há algo errado aqui."            android:layout_below="@id/denunciationTitleText"
             android:layout_margin="@dimen/text_margin"
             android:textAlignment="viewStart"
             android:gravity="start"
