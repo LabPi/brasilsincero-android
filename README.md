@@ -52,7 +52,7 @@ versões Android e iOS.
 * Usabilidade para acesso as informações;
 * Formulário para denúncia e painel administrativo para controle delas por parte do Governo Federal.
 
-# Ferramentas Utilizadas
+### Ferramentas Utilizadas
 
 * Slack
 * Trello
