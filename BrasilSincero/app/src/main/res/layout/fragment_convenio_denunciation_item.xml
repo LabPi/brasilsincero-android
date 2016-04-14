@@ -49,7 +49,7 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignBottom="@id/denunciationTitleText"
@@ -75,7 +75,8 @@
                 android:layout_toRightOf="@id/likesValue"
                 android:layout_toEndOf="@id/likesValue"
                 android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"/>
+                android:layout_marginStart="5dp"
+                android:scaleType="fitStart"/>
 
             <TextView
                 android:id="@+id/dislikesValue"
@@ -98,7 +99,8 @@
                 android:layout_toRightOf="@id/dislikesValue"
                 android:layout_toEndOf="@id/dislikesValue"
                 android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"/>
+                android:layout_marginStart="5dp"
+                android:scaleType="fitStart"/>
         </RelativeLayout>
 
         <TextView
