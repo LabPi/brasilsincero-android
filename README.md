@@ -64,8 +64,12 @@ versões Android e iOS.
 
 ### Vídeo Demonstração iOS
 
-Em Breve!
+[![Brasil Sincero](http://img.youtube.com/vi/FMcR2Q3muEc/0.jpg)](https://www.youtube.com/watch?v=FMcR2Q3muEc "Brasil Sincero iOS")
+
+[Link para vídeo no Youtube](https://www.youtube.com/watch?v=FMcR2Q3muEc)
 
 ### Vídeo Demonstração Android
 
-Em Breve!
+[![Brasil Sincero](http://img.youtube.com/vi/u0n0abZSu7Y/0.jpg)](https://www.youtube.com/watch?v=u0n0abZSu7Y "Brasil Sincero Android")
+
+[Link para vídeo no Youtube](https://www.youtube.com/watch?v=u0n0abZSu7Y)
