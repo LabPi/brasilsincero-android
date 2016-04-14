@@ -15,7 +15,8 @@
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/id"
@@ -34,64 +35,6 @@
             android:visibility="gone"/>
 
         <TextView
-            android:id="@+id/titleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/text_margin"
-            android:layout_marginLeft="@dimen/text_margin"
-            android:layout_marginTop="@dimen/text_margin"
-            android:textAppearance="?attr/textAppearanceListItem"
-            android:textSize="16sp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:text="Titulo do conv/transf"
-            />
-
-        <TextView
-            android:id="@+id/dateText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="@dimen/text_margin"
-            android:textAppearance="?attr/textAppearanceListItem"
-            android:textSize="13sp"
-            android:layout_alignStart="@id/titleText"
-            android:layout_alignLeft="@id/titleText"
-            android:layout_below="@id/titleText"
-            android:textColor="@color/secondary_text"
-            android:text="10/02/2016"
-            />
-
-        <TextView
-            android:id="@+id/valueText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/text_margin"
-            android:layout_marginRight="@dimen/text_margin"
-            android:layout_marginTop="@dimen/text_margin"
-            android:textAppearance="?attr/textAppearanceListItem"
-            android:textSize="16sp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:text="R$ 1.000.000,00"
-            />
-
-        <TextView
-            android:id="@+id/locationText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="@dimen/text_margin"
-            android:textAppearance="?attr/textAppearanceListItem"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            android:layout_alignEnd="@id/valueText"
-            android:layout_alignRight="@id/valueText"
-            android:layout_below="@id/valueText"
-            android:text="Cidade - ES"
-            />
-
-        <TextView
             android:id="@+id/denunciationTitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -101,8 +44,7 @@
             android:textSize="20sp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:text="Denuncia"
-            android:layout_below="@id/locationText"
+            android:text="Denúncia"
             />
 
         <RelativeLayout
@@ -168,7 +110,7 @@
             android:textSize="16sp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper, mauris sed laoreet lacinia, dui diam feugiat felis, fringilla faucibus libero felis in ligula. Aenean semper libero turpis, ut facilisis odio consectetur a. Phasellus eget mi nec lectus mollis volutpat. Sed tempor laoreet sem, eu pharetra turpis tempus convallis. Nullam ac lobortis elit. Quisque pharetra magna ipsum, semper egestas nisl aliquam at. Sed pharetra rhoncus purus sit amet rhoncus."
+            android:text="O Ministério Público deveria investigar essa transferência pois minha cidade é muito pequena e nunca ocorreu a obra mencionada. Além disso o valor é muito alto, suspeito que há algo errado aqui."
             android:layout_below="@id/denunciationTitleText"
             android:layout_margin="@dimen/text_margin"
             android:textAlignment="viewStart"

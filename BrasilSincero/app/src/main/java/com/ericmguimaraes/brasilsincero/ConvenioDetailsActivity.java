@@ -90,7 +90,7 @@ public class ConvenioDetailsActivity extends AppCompatActivity implements Denunc
     protected void onResume() {
         super.onResume();
         FragmentTransaction fragmentTransaction =  getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment, DenunciationsFragment.newInstance(1));
+        fragmentTransaction.replace(R.id.fragment, DenunciationsFragment.newInstance(1, false));
         fragmentTransaction.commit();
     }
 

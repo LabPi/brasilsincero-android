@@ -25,8 +25,10 @@ public class DenunciationsFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
+    private static final String ARG_SHOW_DETAILS = "show-details";
     // TODO: Customize parameters
     private int mColumnCount = 1;
+    private boolean showDetails = true;
     private OnListFragmentInteractionListener mListener;
 
     /**
@@ -37,11 +39,15 @@ public class DenunciationsFragment extends Fragment {
     }
 
     // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
     public static DenunciationsFragment newInstance(int columnCount) {
+        return newInstance(columnCount, true);
+    }
+
+    public static DenunciationsFragment newInstance(int columnCount, boolean showDetails) {
         DenunciationsFragment fragment = new DenunciationsFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
+        args.putBoolean(ARG_SHOW_DETAILS, showDetails);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,6 +58,7 @@ public class DenunciationsFragment extends Fragment {
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+            showDetails = getArguments().getBoolean(ARG_SHOW_DETAILS);
         }
     }
 
@@ -71,7 +78,7 @@ public class DenunciationsFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyDenunciationsRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyDenunciationsRecyclerViewAdapter(DummyContent.ITEMS, mListener, showDetails));
         }
         return view;
     }

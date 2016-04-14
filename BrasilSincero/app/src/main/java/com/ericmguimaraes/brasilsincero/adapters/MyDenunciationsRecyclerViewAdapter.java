@@ -25,16 +25,22 @@ public class MyDenunciationsRecyclerViewAdapter extends RecyclerView.Adapter<MyD
 
     private final List<DummyItem> mValues;
     private final OnListFragmentInteractionListener mListener;
+    private final boolean displayDetails;
 
-    public MyDenunciationsRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyDenunciationsRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener, boolean showDetails) {
         mValues = items;
         mListener = listener;
+        displayDetails = showDetails;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_denunciation_item, parent, false);
+        View view;
+        if (displayDetails) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_denunciation_item, parent, false);
+        } else {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_convenio_denunciation_item, parent, false);
+        }
         return new ViewHolder(view);
     }
 
