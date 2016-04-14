@@ -30,7 +30,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="@dimen/activity_horizontal_margin"
             >
@@ -42,20 +42,39 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:text="Programa de exemplo 123"
-                android:layout_marginTop="@dimen/text_margin"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="@dimen/text_margin"
                 android:layout_gravity="center"
                 android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/situacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Ok"/>
+
+            <TextView
+                android:id="@+id/esfera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Ok"
+                android:layout_marginBottom="@dimen/text_margin"/>
 
             <TextView
                 android:id="@+id/proponenteContent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:text="Fulando da silva santos"
-                android:layout_marginBottom="@dimen/text_margin"
-                android:layout_gravity="center"
-                android:gravity="center"/>
+                android:text="Fulando da silva santos"/>
+
+            <TextView
+                android:id="@+id/qualificacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Ok"/>
 
             <TextView
                 android:id="@+id/responsavelContent"
@@ -63,9 +82,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="Fulando da silva santos"
-                android:layout_marginBottom="@dimen/text_margin"
-                android:layout_gravity="center"
-                android:gravity="center"/>
+                android:layout_marginBottom="@dimen/text_margin"/>
 
             <TextView
                 android:id="@+id/valorContent"
@@ -73,34 +90,26 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="R$ 1.000.000,00"
-                android:layout_marginBottom="@dimen/text_margin"
-                android:layout_gravity="center"
-                android:gravity="center"/>
+                android:layout_marginBottom="@dimen/text_margin"/>
 
             <TextView
+                android:id="@+id/descricao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:text="Outras informacoes"
-                android:layout_marginBottom="@dimen/text_margin"
-                android:layout_gravity="center"
-                android:gravity="center"/>
-
+                android:text="ABC"/>
         </LinearLayout>
 
-    </LinearLayout>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/bottom_sheet_behavior"
-        app:behavior_peekHeight="100dp" >
-        <RelativeLayout
-            android:id="@+id/fragment"
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-    </android.support.v7.widget.CardView>
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:id="@+id/fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

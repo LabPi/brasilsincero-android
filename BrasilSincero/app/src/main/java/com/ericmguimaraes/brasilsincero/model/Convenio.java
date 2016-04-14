@@ -13,6 +13,11 @@ public class Convenio {
     public String dt_proposta;
     public String nm_municipio_proponente;
     public String uf_proponente;
+    public String tx_objeto_convenio;
+    public String vl_repasse;
+    public String tx_situacao;
+    public String tx_esfera_adm_proponente;
+    public String tx_qualific_proponente;
 
     public String header;
 
