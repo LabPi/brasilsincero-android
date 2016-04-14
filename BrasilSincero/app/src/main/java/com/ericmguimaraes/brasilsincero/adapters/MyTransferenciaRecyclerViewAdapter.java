@@ -48,7 +48,7 @@ public class MyTransferenciaRecyclerViewAdapter extends RecyclerView.Adapter<MyT
         View view;
         if(viewType==TRANSACAO_VIEW_ID) {
             view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.fragment_transferencia_item, parent, false);
+                    .inflate(R.layout.fragment_convenio_item, parent, false);
             return new TransferenciaViewHolder(view);
         }
         else {
@@ -67,7 +67,7 @@ public class MyTransferenciaRecyclerViewAdapter extends RecyclerView.Adapter<MyT
         } else {
             final TransferenciaViewHolder holder = (TransferenciaViewHolder) viewHolder;
             holder.mItem = t;
-            holder.nm_programa.setText(t.nm_identif_favorecido_dl.substring(0, 15) + "...");
+            holder.nm_programa.setText(t.nm_identif_favorecido_dl);
             holder.location.setText(t.nm_municipio_convenente + " - " + t.uf_convenente);
             holder.date.setText(t.dt_emissao_dl);
             holder.vl_global.setText(t.vl_bruto_dl);

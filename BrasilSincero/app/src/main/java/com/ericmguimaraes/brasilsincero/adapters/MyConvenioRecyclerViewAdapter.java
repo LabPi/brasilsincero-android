@@ -65,7 +65,7 @@ public class MyConvenioRecyclerViewAdapter extends RecyclerView.Adapter<MyConven
         } else {
             final ConvenioViewHolder holder =  (ConvenioViewHolder) viewHolder;
             holder.mItem = c;
-            holder.nm_programa.setText(c.nm_programa.substring(0, 15) + "...");
+            holder.nm_programa.setText(c.nm_programa);
             holder.location.setText(c.nm_municipio_proponente + " - " + c.uf_proponente);
             holder.date.setText(c.dt_proposta);
             holder.vl_global.setText(c.vl_global);

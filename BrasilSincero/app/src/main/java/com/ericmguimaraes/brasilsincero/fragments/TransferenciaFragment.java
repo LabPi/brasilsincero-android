@@ -99,7 +99,7 @@ public class TransferenciaFragment extends Fragment implements SearchView.OnQuer
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_transferencia_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_convenio_list, container, false);
         ButterKnife.bind(this,view);
 
         Context context = view.getContext();
