@@ -73,3 +73,5 @@ versões Android e iOS.
 [![Brasil Sincero](http://img.youtube.com/vi/u0n0abZSu7Y/0.jpg)](https://www.youtube.com/watch?v=u0n0abZSu7Y "Brasil Sincero Android")
 
 [Link para vídeo no Youtube](https://www.youtube.com/watch?v=u0n0abZSu7Y)
+
+[Download do APK](https://github.com/brasilsincero/batman/releases/download/1.0/app-debug.apk)
